@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.tools.idea.editors.navigation.model.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "heinezen.stukla.werkzeuge.TestAuswahlWerkzeug"/>
+      <point      
+        x = "1760"      
+        y = "2240"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        xmlResourceName = "menu_fragen_beantworter"/>
+      <point      
+        x = "1760"      
+        y = "1440"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "heinezen.stukla.werkzeuge.TestAuswahlWerkzeugUI"/>
+      <point      
+        x = "480"      
+        y = "2880"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        xmlResourceName = "menu_test_auswahl"/>
+      <point      
+        x = "2880"      
+        y = "1440"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "heinezen.stukla.TestAuswahl"/>
+      <point      
+        x = "480"      
+        y = "0"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "heinezen.stukla.FragenBeantworter"/>
+      <point      
+        x = "480"      
+        y = "1440"/>
+    </statePointEntry>
+  </locations>
+</navigationModel>
