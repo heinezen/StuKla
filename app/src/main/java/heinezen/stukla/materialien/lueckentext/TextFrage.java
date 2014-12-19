@@ -28,7 +28,7 @@ public class TextFrage extends AbstractTextFrage implements Frage
 		
 	    for(String moeglichkeit : _antwortMoeglichkeiten)
 	    {
-	    	if(moeglichkeit.equals(_spielerAntwort))
+	    	if(moeglichkeit.equals(_spielerAntwort.toLowerCase()))
 	    	{
 	    		wert += getPunkteFuerAntwort();
 	    	}
