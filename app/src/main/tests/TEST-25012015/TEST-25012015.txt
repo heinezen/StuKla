@@ -1,0 +1,31 @@
+###STUKLA###
+###UEB###1.01
+###UEB###TEST
+###UEB###25.01.2015
+###UEB###56
+
+###FRA###
+###FRG###Auswahl
+###FRG###Welche Partei ist hier zu sehen?
+###FRG###3
+###FRG###0
+###FRG###true###BLD###.\tests\TEST-25012015\TEST-25012015-AFD.jpg
+###FRG###false
+###FRG###AFD###ANT###true
+###FRG###CDU###ANT###false
+###FRG###SPD###ANT###false
+###FRG###Die schlauen Blauen###ANT###false
+###FRG###NSDAP###ANT###false
+
+###FRA###
+###FRG###Text
+###FRG###Welches berühmte Programm sieht man hier?
+###FRG###5
+###FRG###0
+###FRG###false
+###FRG###true###QUE###System.out.println("Hello World!");
+###QUE###System.out.println();
+###FRG###Hallo Welt
+###FRG###Hello World
+
+
