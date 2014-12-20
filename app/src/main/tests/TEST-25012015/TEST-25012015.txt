@@ -9,17 +9,22 @@
 ###FRG###Welche Partei ist hier zu sehen?
 ###FRG###3
 ###FRG###0
-###FRG###true###BLD###.\tests\TEST-25012015\TEST-25012015-AFD.jpg
+###FRG###true###BLD###TEST-25012015-AFD.jpg
 ###FRG###false
 ###FRG###AFD###ANT###true
 ###FRG###CDU###ANT###false
 ###FRG###SPD###ANT###false
+###FRG###DVP###ANT###false
+###FRG###LINKE###ANT###false
+###FRG###GrÃ¼ne###ANT###false
+###FRG###CSU###ANT###false
+###FRG###KPD###ANT###false
 ###FRG###Die schlauen Blauen###ANT###false
 ###FRG###NSDAP###ANT###false
 
 ###FRA###
 ###FRG###Text
-###FRG###Welches berühmte Programm sieht man hier?
+###FRG###Welches berï¿½hmte Programm sieht man hier?
 ###FRG###5
 ###FRG###0
 ###FRG###false

@@ -43,7 +43,7 @@ public class FragenEinleser
         
         _fragenliste = new LinkedList<Frage>();
         
-        liesFragenEin();
+        liesFragenEin(datei);
         liesUebersichtEin();
     }
     
@@ -106,7 +106,7 @@ public class FragenEinleser
      * Wichtig: Der erste String des Array rohFragen ist immer der Header der Textdatei, also
      * irrelevant f�r das Auslesen.
      */
-    private void liesFragenEin()
+    private void liesFragenEin(String datei)
     {
         String[] rohFragen = _rohText.split(FragenFormattierer.FRAGEN_TRENNER);
         
@@ -114,7 +114,7 @@ public class FragenEinleser
         {
             try
             {
-            	Frage frage = FragenFormattierer.parseFrage(rohFragen[i]);
+            	Frage frage = FragenFormattierer.parseFrage(rohFragen[i], datei);
             	
 	            _fragenliste.add(frage);
             }
