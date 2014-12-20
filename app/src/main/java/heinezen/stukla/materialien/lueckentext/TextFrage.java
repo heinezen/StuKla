@@ -6,47 +6,45 @@ import android.os.Parcelable;
 import heinezen.stukla.materialien.Frage;
 
 /**
- * Eine Textfrage, die mehrere Antwortm�glichkeiten in
- * einem Array h�lt. TextFragen werden verglichen, indem die Antworten
- * des Klienten mit den M�glichkeiten verglichen werden.
- * 
- * @author Christophad
+ * Eine Textfrage, die mehrere Antwortm�glichkeiten in einem Array h�lt. TextFragen werden
+ * verglichen, indem die Antworten des Klienten mit den M�glichkeiten verglichen werden.
  *
+ * @author Christophad
  */
 public class TextFrage extends AbstractTextFrage implements Frage
 {
 
-	public TextFrage(String fragetext, int fragepunkte, int abzugpunkte, String[] antwortMoeglichkeiten)
+    public TextFrage(String fragetext, int fragepunkte, int abzugpunkte, String[] antwortMoeglichkeiten)
     {
-	    super(fragetext, fragepunkte, abzugpunkte, antwortMoeglichkeiten);
+        super(fragetext, fragepunkte, abzugpunkte, antwortMoeglichkeiten);
     }
 
-	@Override
+    @Override
     public int vergleicheAntworten()
     {
-		int wert = 0;
-		
-	    for(String moeglichkeit : _antwortMoeglichkeiten)
-	    {
-	    	if(moeglichkeit.equals(_spielerAntwort.toLowerCase()))
-	    	{
-	    		wert += getPunkteFuerAntwort();
-	    	}
-	    }
-	    
-	    return wert;
+        int wert = 0;
+
+        for(String moeglichkeit : _antwortMoeglichkeiten)
+        {
+            if(moeglichkeit.equals(_spielerAntwort.toLowerCase()))
+            {
+                wert += getPunkteFuerAntwort();
+            }
+        }
+
+        return wert;
     }
 
-	@Override
+    @Override
     public void aktualisiereSpielerAntworten(Object neueAntwort)
     {
-	    _spielerAntwort = (String) neueAntwort;
+        _spielerAntwort = (String) neueAntwort;
     }
 
-	@Override
+    @Override
     public String getFragetyp()
     {
-	    return "Text";
+        return "Text";
     }
 
     /**
