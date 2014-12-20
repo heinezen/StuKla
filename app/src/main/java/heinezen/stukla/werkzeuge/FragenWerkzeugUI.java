@@ -2,10 +2,12 @@ package heinezen.stukla.werkzeuge;
 
 import android.graphics.Color;
 import android.net.Uri;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -180,9 +182,9 @@ class FragenWerkzeugUI
      */
     public void aktualisiereBild(File neuesBild)
     {
-        assert neuesBild != null : "Vorbedingung verletzt : neuesBilde != null";
+        assert neuesBild != null : "Vorbedingung verletzt : neuesBild != null";
 
-        _bildLabel.setEnabled(true);
+        _bildBereich.addView(_bildLabel);
         _bildLabel.setImageURI(Uri.fromFile(neuesBild));
     }
 
@@ -191,7 +193,7 @@ class FragenWerkzeugUI
      */
     public void entferneBild()
     {
-        _bildLabel.setEnabled(false);
+        _bildBereich.removeView(_bildLabel);
     }
 
     /**
