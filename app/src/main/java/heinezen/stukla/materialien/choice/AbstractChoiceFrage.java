@@ -32,7 +32,8 @@ public abstract class AbstractChoiceFrage extends AbstractFrage
 	 * Erzeugt eine Frage mit Fragetext und mehreren Multiple-Choice-Antworten.
 	 * 
 	 * @param fragetext Der Fragetext.
-	 * @param fragepunkte 
+	 * @param fragepunkte Die Punkte für eine richtige Antwort.
+     * @param abzugpunkte Die Punkte, die für eine falsche Antwort abgezogen werden.
 	 * @param antworten Die m�glichen Antworten der Frage.
 	 */
 	public AbstractChoiceFrage(String fragetext, int fragepunkte, int abzugpunkte, Antwort[] antworten) 
