@@ -53,7 +53,7 @@ public class FragenWerkzeug extends ActionBarActivity
         _fragenService = new FragenServiceImpl(fragen, false);
 
         _fragenPager = (ViewPager) findViewById(R.id._pager);
-        _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager()));
+        _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), false));
 
         _uiFragenWerkzeug = new FragenWerkzeugUI(
                 (android.widget.LinearLayout) findViewById(R.id._punkteAnzeige));
@@ -103,6 +103,11 @@ public class FragenWerkzeug extends ActionBarActivity
      */
     private void testAbgeben()
     {
+        int position = _fragenPager.getCurrentItem();
+        _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), true));
+        registrierePager();
+        _fragenPager.setCurrentItem(position);
+
         int endergebnis = _fragenService.berechneGesamtpunktzahl();
         int maxErgebnis = _fragenService.getMaxPunktzahl();
 
@@ -114,15 +119,24 @@ public class FragenWerkzeug extends ActionBarActivity
      */
     private class FragenPagerAdapter extends FragmentStatePagerAdapter
     {
-        public FragenPagerAdapter(FragmentManager fragmentManager)
+        private final boolean _istBeendet;
+
+        /**
+         * Erzeugt einen PagerAdapter, der FragenFragments verwaltet.
+         *
+         * @param fragmentManager Der FragmentManager der Activity.
+         * @param beendet Gibt an, ob der Test beendet ist.
+         */
+        public FragenPagerAdapter(FragmentManager fragmentManager, boolean beendet)
         {
             super(fragmentManager);
+            _istBeendet = beendet;
         }
 
         @Override
         public Fragment getItem(int fragenIndex)
         {
-            return FragenFragment.newInstance(_fragenService.getFrage(fragenIndex));
+            return FragenFragment.newInstance(_fragenService.getFrage(fragenIndex), _istBeendet);
         }
 
         @Override

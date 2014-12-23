@@ -14,8 +14,10 @@ import heinezen.stukla.materialien.OptionalFrage;
 public class FragenFragment extends Fragment
 {
     private static final String ARG_FRAGE = "Frage";
+    private static final String ARG_BEENDET = "Beendet";
 
     private Frage _frage;
+    private boolean _istBeendet;
 
     private AntwortenWerkzeug _antwortenWerkzeug;
     private FragenFragmentUI _uiFragenWerkzeug;
@@ -27,12 +29,13 @@ public class FragenFragment extends Fragment
      *
      * @return Ein FragenFragment.
      */
-    public static FragenFragment newInstance(Frage frage)
+    public static FragenFragment newInstance(Frage frage, boolean beendet)
     {
         FragenFragment fragment = new FragenFragment();
-        Bundle fragen = new Bundle();
-        fragen.putParcelable(ARG_FRAGE, frage);
-        fragment.setArguments(fragen);
+        Bundle args = new Bundle();
+        args.putParcelable(ARG_FRAGE, frage);
+        args.putBoolean(ARG_BEENDET, beendet);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -48,6 +51,7 @@ public class FragenFragment extends Fragment
         if(getArguments() != null)
         {
             _frage = getArguments().getParcelable(ARG_FRAGE);
+            _istBeendet = getArguments().getBoolean(ARG_BEENDET);
         }
     }
 
@@ -60,6 +64,10 @@ public class FragenFragment extends Fragment
 
         _antwortenWerkzeug = new AntwortenWerkzeug(
                 (LinearLayout) rootView.findViewById(R.id._antwortenBereich));
+
+        if(_istBeendet)
+            _antwortenWerkzeug.setzeBeendet();
+
         _uiFragenWerkzeug = new FragenFragmentUI(
                 (LinearLayout) rootView.findViewById(R.id._anzeige));
 
