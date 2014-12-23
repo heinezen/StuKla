@@ -8,25 +8,22 @@ import java.io.InputStreamReader;
 
 
 /**
- * Liest Text aus einer Text-Datei in einen String ein. \n wird vernachl�ssigt, sodass
- * eine Formatierung in gew�nschter Form mit \n m�glich ist.
- * 
- * @Heine
- * @03/03/14
+ * Liest Text aus einer Text-Datei in einen String ein. \n wird vernachl�ssigt, sodass eine
+ * Formatierung in gew�nschter Form mit \n m�glich ist.
  */
 public class TextEinleser
 {
     private String _text;
     private String _titel;
-    
+
     public TextEinleser(String datei)
     {
         _text = "";
         _titel = "";
-        
+
         try
         {
-            InputStream ips = new FileInputStream(datei); 
+            InputStream ips = new FileInputStream(datei);
             InputStreamReader ipsr = new InputStreamReader(ips);
             BufferedReader br = new BufferedReader(ipsr);
 
@@ -34,7 +31,7 @@ public class TextEinleser
             br.readLine();
             // Inhalt einlesen
             String line = br.readLine();
-            
+
             while(line != null)
             {
                 _text = _text + line;
@@ -48,24 +45,24 @@ public class TextEinleser
             System.out.println(e.toString());
         }
     }
-    
+
     public String getTitel()
     {
-    	return _titel;
+        return _titel;
     }
-    
+
     public String toString()
     {
         return _text;
     }
-    
+
     public static String getText(File datei)
     {
-    	String text = "";
-        
+        String text = "";
+
         try
         {
-            InputStream ips = new FileInputStream(datei); 
+            InputStream ips = new FileInputStream(datei);
             InputStreamReader ipsr = new InputStreamReader(ips);
             BufferedReader br = new BufferedReader(ipsr);
 
@@ -73,7 +70,7 @@ public class TextEinleser
             br.readLine();
             // Inhalt einlesen
             String line = br.readLine();
-            
+
             while(line != null)
             {
                 text = text + line;
@@ -81,19 +78,19 @@ public class TextEinleser
             }
 
             br.close();
-            
+
             return text;
         }
         catch(Exception e)
         {
             System.out.println(e.toString());
         }
-        
-		return text;
+
+        return text;
     }
-    
+
     public static String getTitel(File datei)
     {
-    	return datei.getName();
+        return datei.getName();
     }
 }

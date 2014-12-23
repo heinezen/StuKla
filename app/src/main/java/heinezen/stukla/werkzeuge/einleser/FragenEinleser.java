@@ -14,25 +14,20 @@ import heinezen.stukla.materialien.format.UebersichtFormattierer;
  * erzeugt werden. Gespeichert wird das Ergebnis in einer (Fragen-)Liste. Die Fragen und Antworten
  * enstehen indem der String aus dem Texteinleser gesplittet wird. Dies geschieht nach folgenden
  * Regeln:
- * 
- * "<<##>>" am Ende eines Fragenblockes.
- * "::" am Ende eines Antwortenblockes.
- * "<<QQ>>" am Ende eines Quelltextblockes.
- * "<<!!>>" am Ende eines Antwortenwertes.
- * 
+ *
+ * "<<##>>" am Ende eines Fragenblockes. "::" am Ende eines Antwortenblockes. "<<QQ>>" am Ende eines
+ * Quelltextblockes. "<<!!>>" am Ende eines Antwortenwertes.
+ *
  * Die Bl�cke enthalten Frage und Antwortenwerte in Rohform.
- * 
- * @Heine 
- * @03/03/14
  */
 public class FragenEinleser
-{	
+{
     private TextEinleser _texteinleser;
     private String _rohText;
-    
+
     private List<Frage> _fragenliste;
     private String[] _uebersicht;
-    
+
     /**
      * Erstellt einen neuen Fragenzerteiler der die Textdatei aus dem String datei einliest.
      */
@@ -40,35 +35,35 @@ public class FragenEinleser
     {
         _texteinleser = new TextEinleser(datei);
         _rohText = _texteinleser.toString();
-        
+
         _fragenliste = new LinkedList<Frage>();
-        
+
         liesFragenEin(datei);
         liesUebersichtEin();
     }
-    
+
     /**
      * @return Die aus dem Textdokument eingelesenen Fragen und Antworten
-     * 
+     *
      * @throws NoQuestionsInFileException
      */
     public Frage[] gibFragenAus() throws NoQuestionsInFileException
     {
-    	if(!_fragenliste.isEmpty())
-    	{	
-    		Frage[] fragen = new Frage[_fragenliste.size()];
-            
+        if(!_fragenliste.isEmpty())
+        {
+            Frage[] fragen = new Frage[_fragenliste.size()];
+
             for(int i = 0; i < _fragenliste.size(); ++i)
             {
-            	fragen[i] = (Frage) _fragenliste.toArray()[i];
+                fragen[i] = (Frage) _fragenliste.toArray()[i];
             }
-            
+
             return fragen;
-    	}
-    	else
-    	{
-    		throw new NoQuestionsInFileException();
-    	}
+        }
+        else
+        {
+            throw new NoQuestionsInFileException();
+        }
     }
 
     /**
@@ -98,27 +93,27 @@ public class FragenEinleser
 
         _uebersicht = UebersichtFormattierer.parseUeberblick(rohUeberblick);
     }
-    
+
     /**
-     * Zerteilt den rohen Text aus dem Quelldokument in einzelne Fragebl�cke.
-     * Die Methode liesFrageEin gibt eine Frage zur�ck, die der Frageliste hinzugef�gt wird.
-     * 
+     * Zerteilt den rohen Text aus dem Quelldokument in einzelne Fragebl�cke. Die Methode
+     * liesFrageEin gibt eine Frage zur�ck, die der Frageliste hinzugef�gt wird.
+     *
      * Wichtig: Der erste String des Array rohFragen ist immer der Header der Textdatei, also
      * irrelevant f�r das Auslesen.
      */
     private void liesFragenEin(String datei)
     {
         String[] rohFragen = _rohText.split(FragenFormattierer.FRAGEN_TRENNER);
-        
+
         for(int i = 1; i < rohFragen.length; ++i)
         {
             try
             {
-            	Frage frage = FragenFormattierer.parseFrage(rohFragen[i], datei);
-            	
-	            _fragenliste.add(frage);
+                Frage frage = FragenFormattierer.parseFrage(rohFragen[i], datei);
+
+                _fragenliste.add(frage);
             }
-            catch (CorruptQuestionException e)
+            catch(CorruptQuestionException e)
             {
                 e.printStackTrace();
             }

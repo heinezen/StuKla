@@ -10,34 +10,33 @@ import java.util.List;
 
 /**
  * TODO Kommentare
- * 
- * @author Christophad
  *
+ * @author Christophad
  */
 public class DateienEinleser
 {
-	private final File ORDNER;
+    private final File ORDNER;
 
-	private final String KENNZEICHNUNG = "###STUKLA###";
+    private final String KENNZEICHNUNG = "###STUKLA###";
 
-	private List<String> _testDateien;
+    private List<String> _testDateien;
 
-	public DateienEinleser(File ordner)
-	{
-		ORDNER = ordner;
+    public DateienEinleser(File ordner)
+    {
+        ORDNER = ordner;
 
-		_testDateien = new ArrayList<String>();
+        _testDateien = new ArrayList<String>();
 
-		getAlleDateienInOrdner(ORDNER);
+        getAlleDateienInOrdner(ORDNER);
 
-		for(String s : _testDateien)
-		{
-			System.out.println(s);
-		}
-	}
+        for(String s : _testDateien)
+        {
+            System.out.println(s);
+        }
+    }
 
-	private void getAlleDateienInOrdner(File ordner)
-	{
+    private void getAlleDateienInOrdner(File ordner)
+    {
         if(ordner.exists())
         {
             for(File datei : ordner.listFiles())
@@ -52,63 +51,64 @@ public class DateienEinleser
                 }
             }
         }
-	}
+    }
 
-	/**
-	 * Pr�ft, ob die Datei mit dem angegebenen Namen zul�ssig ist.
-	 * 
-	 * @param name Dateiname
-	 * @return Gibt zur�ck, ob die Datei eine Testdatei ist.
-	 */
-	private boolean testeObZulaessig(String name)
-	{
-		String endung = name.substring(name.length() - 4, name.length());
+    /**
+     * Pr�ft, ob die Datei mit dem angegebenen Namen zul�ssig ist.
+     *
+     * @param name Dateiname
+     *
+     * @return Gibt zur�ck, ob die Datei eine Testdatei ist.
+     */
+    private boolean testeObZulaessig(String name)
+    {
+        String endung = name.substring(name.length() - 4, name.length());
 
-		if(!endung.equals(".txt"))
-		{
-			return false;
-		}
-		else if(ersteZeileZulaessig(name))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+        if(!endung.equals(".txt"))
+        {
+            return false;
+        }
+        else if(ersteZeileZulaessig(name))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-	private boolean ersteZeileZulaessig(String name)
-	{
-		try
-		{
-			InputStream ips = new FileInputStream(name);
-			InputStreamReader ipsr = new InputStreamReader(ips);
-			BufferedReader br = new BufferedReader(ipsr);
+    private boolean ersteZeileZulaessig(String name)
+    {
+        try
+        {
+            InputStream ips = new FileInputStream(name);
+            InputStreamReader ipsr = new InputStreamReader(ips);
+            BufferedReader br = new BufferedReader(ipsr);
 
-			String ausdruck = br.readLine();
+            String ausdruck = br.readLine();
 
-			br.close();
+            br.close();
 
-			if(ausdruck.equals(KENNZEICHNUNG))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-		catch(Exception e)
-		{
-			System.out.println(e.toString());
-		}
-		return false;
+            if(ausdruck.equals(KENNZEICHNUNG))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.toString());
+        }
+        return false;
 
-	}
+    }
 
-	public List<String> getFrageDateien()
-	{
-		return _testDateien;
-	}
+    public List<String> getFrageDateien()
+    {
+        return _testDateien;
+    }
 }

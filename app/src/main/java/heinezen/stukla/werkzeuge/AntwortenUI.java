@@ -38,9 +38,9 @@ class AntwortenUI
     }
 
     /**
-     * Aktualisiert den Antwortenbereich. Bedienelemente passen sich dem
-     * jeweiligen Fragetyp an.
-     *  @param antwortTexte Die Texte der Antworten.
+     * Aktualisiert den Antwortenbereich. Bedienelemente passen sich dem jeweiligen Fragetyp an.
+     *
+     * @param antwortTexte Die Texte der Antworten.
      * @param antwortWerte Die Werte der Antworten.
      * @param fragetyp Der Fragetyp der Frage.
      */
@@ -79,7 +79,8 @@ class AntwortenUI
                 boolean[] neueAntwortWerte = (boolean[]) antwortWerte;
                 RadioGroup radioGruppe = new RadioGroup(_antwortenBereich.getContext());
 
-                RadioGroup.LayoutParams param = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                RadioGroup.LayoutParams param = new RadioGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT);
 
                 for(int i = 0; i < antwortTexte.length; ++i)
@@ -124,11 +125,11 @@ class AntwortenUI
     }
 
     /**
-     * Gibt die Eingaben des Spielers zur derzeitigen Antwort zur�ck.
-     * dabei wird je nach Fragetyp ein unterschiedlicher R�ckgabetyp
-     * verwendet. Beim casten ist auf den Fragetyp zu achten.
+     * Gibt die Eingaben des Spielers zur derzeitigen Antwort zur�ck. dabei wird je nach Fragetyp
+     * ein unterschiedlicher R�ckgabetyp verwendet. Beim casten ist auf den Fragetyp zu achten.
      *
      * @param fragetyp Der Fragetyp der Frage.
+     *
      * @return Ein Object mit den derzeitigen Antwortwerten.
      */
     public Object getEingaben(Fragetyp fragetyp)

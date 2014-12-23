@@ -18,10 +18,9 @@ class FragenFragmentUI
     private LinearLayout _bildBereich;
 
     /**
-     * Erstellt eine neue GUI f�r ein FragenWerkzeug und f�gt dieses
-     * zu den Observern hinzu.
+     * Erstellt eine neue GUI f�r ein FragenWerkzeug und f�gt dieses zu den Observern hinzu.
      *
-     * @param  anzeige Der Frame in dem das Fragment platziert wird.
+     * @param anzeige Der Frame in dem das Fragment platziert wird.
      */
     public FragenFragmentUI(LinearLayout anzeige)
     {
@@ -105,7 +104,6 @@ class FragenFragmentUI
      * Aktualisiert den Bildbereich mit einem Bild.
      *
      * @param neuesBild Das neue Bild.
-     * @require neuesBild != null
      */
     public void aktualisiereBild(File neuesBild)
     {
