@@ -1,5 +1,7 @@
 package heinezen.stukla.werkzeuge;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -53,6 +55,21 @@ public class FragenWerkzeug extends ActionBarActivity
         registrierePager();
     }
 
+    /**
+     * Registriert die Listener des Pagers.
+     */
+    private void registrierePager()
+    {
+        _fragenPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener()
+        {
+            @Override
+            public void onPageSelected(int pagePosition)
+            {
+                invalidateOptionsMenu();
+            }
+        });
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -75,21 +92,6 @@ public class FragenWerkzeug extends ActionBarActivity
     }
 
     /**
-     * Registriert die Listener des Pagers.
-     */
-    private void registrierePager()
-    {
-        _fragenPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener()
-        {
-            @Override
-            public void onPageSelected(int pagePosition)
-            {
-                invalidateOptionsMenu();
-            }
-        });
-    }
-
-    /**
      * Gibt den Test ab und nennt die Gesamtpunktzahl. Au�erdem werden alle AntwortElemente
      * gesperrt.
      */
@@ -99,6 +101,41 @@ public class FragenWerkzeug extends ActionBarActivity
         _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), true));
         registrierePager();
         _fragenPager.setCurrentItem(position);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("Test abbrechen und zur Auswahl zurückkehren?");
+        builder.setTitle("Abbrechen");
+
+        builder.setPositiveButton("Ja", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                returnToStart();
+            }
+        });
+        builder.setNegativeButton("Nein", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+
+        dialog.show();
+    }
+
+    private void returnToStart()
+    {
+        super.onBackPressed();
     }
 
     /**
