@@ -2,6 +2,8 @@ package heinezen.stukla.materialien.choice;
 
 import android.os.Parcel;
 
+import java.util.Random;
+
 import heinezen.stukla.materialien.AbstractFrage;
 import heinezen.stukla.materialien.Antwort;
 
@@ -54,7 +56,8 @@ public abstract class AbstractChoiceFrage extends AbstractFrage
 	    
 	    for(int i = 0; i < tempAntworten.length; ++i)
 	    {
-	    	int random = (int) (Math.random() * (tempAntworten.length - 1));
+            Random zufall = new Random();
+	    	int random = zufall.nextInt(tempAntworten.length);
 	    	Antwort tempAntwort = tempAntworten[i];
 	    	tempAntworten[i] = tempAntworten[random];
 	    	tempAntworten[random] = tempAntwort;
