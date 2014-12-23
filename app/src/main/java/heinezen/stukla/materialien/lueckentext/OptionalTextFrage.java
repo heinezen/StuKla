@@ -8,8 +8,7 @@ import java.io.File;
 import heinezen.stukla.materialien.OptionalFrage;
 
 /**
- * Eine Textfrage die zus�tzlich noch Quelltext enth�lt.
- * Diese Klasse erweitert die Textfragen.
+ * Eine Textfrage die zus�tzlich noch Quelltext enth�lt. Diese Klasse erweitert die Textfragen.
  *
  * @author Christophad
  */
@@ -26,18 +25,14 @@ public class OptionalTextFrage extends TextFrage implements OptionalFrage
     private final File _bild;
 
     /**
-     * Erstellt eine Text Frage, die mehrere Antwortenm�glichkeiten
-     * und au�erdem Quelltext und ein Bild enth�lt.
+     * Erstellt eine Text Frage, die mehrere Antwortenm�glichkeiten und au�erdem Quelltext und ein
+     * Bild enth�lt.
      *
-     * @param fragetext             Der Fragetext.
-     * @param fragepunkte           Die Punkte f�r eine richtige Antwort.
+     * @param fragetext Der Fragetext.
+     * @param fragepunkte Die Punkte f�r eine richtige Antwort.
      * @param antwortMoeglichkeiten Die Antwortm�glichkeiten der Frage.
-     * @param quelltext             Der Quelltext der Frage.
-     * @param bild                  Das Bild der Frage.
-     * @require !quelltext.isEmpty()
-     * @require bild != null
-     * @require bild.exists()
-     * @require bild.canRead()
+     * @param quelltext Der Quelltext der Frage.
+     * @param bild Das Bild der Frage.
      */
     public OptionalTextFrage(String fragetext, int fragepunkte, int abzugpunkte,
                              String[] antwortMoeglichkeiten, String quelltext, File bild)
@@ -54,17 +49,12 @@ public class OptionalTextFrage extends TextFrage implements OptionalFrage
     }
 
     /**
-     * Erstellt eine Text Frage, die mehrere Antwortenm�glichkeiten
-     * und au�erdem Quelltext enth�lt.
+     * Erstellt eine Text Frage, die mehrere Antwortenm�glichkeiten und au�erdem Quelltext enth�lt.
      *
-     * @param fragetext             Der Fragetext.
-     * @param fragepunkte           Die Punkte f�r eine richtige Antwort.
+     * @param fragetext Der Fragetext.
+     * @param fragepunkte Die Punkte f�r eine richtige Antwort.
      * @param antwortMoeglichkeiten Die Antwortm�glichkeiten der Frage.
-     * @param quelltext             Der Quelltext der Frage.
-     * @require !quelltext.isEmpty()
-     * @require bild != null
-     * @require bild.exists()
-     * @require bild.canRead()
+     * @param quelltext Der Quelltext der Frage.
      */
     public OptionalTextFrage(String fragetext, int fragepunkte, int abzugpunkte,
                              String[] antwortMoeglichkeiten, String quelltext)
@@ -78,17 +68,12 @@ public class OptionalTextFrage extends TextFrage implements OptionalFrage
     }
 
     /**
-     * Erstellt eine Text Frage, die mehrere Antwortenm�glichkeiten
-     * und au�erdem ein Bild enth�lt.
+     * Erstellt eine Text Frage, die mehrere Antwortenm�glichkeiten und au�erdem ein Bild enth�lt.
      *
-     * @param fragetext             Der Fragetext.
-     * @param fragepunkte           Die Punkte f�r eine richtige Antwort.
+     * @param fragetext Der Fragetext.
+     * @param fragepunkte Die Punkte f�r eine richtige Antwort.
      * @param antwortMoeglichkeiten Die Antwortm�glichkeiten der Frage.
-     * @param bild                  Das Bild der Frage.
-     * @require !quelltext.isEmpty()
-     * @require bild != null
-     * @require bild.exists()
-     * @require bild.canRead()
+     * @param bild Das Bild der Frage.
      */
     public OptionalTextFrage(String fragetext, int fragepunkte, int abzugpunkte,
                              String[] antwortMoeglichkeiten, File bild)
@@ -117,7 +102,6 @@ public class OptionalTextFrage extends TextFrage implements OptionalFrage
      * Gibt das Bild der Frage aus.
      *
      * @return Das Bild.
-     * @require hatBild()
      */
     public File getBild()
     {

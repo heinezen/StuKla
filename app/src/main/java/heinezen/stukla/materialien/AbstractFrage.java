@@ -25,11 +25,8 @@ public abstract class AbstractFrage implements Parcelable
     /**
      * Erzeugt eine Frage mit Fragetext.
      *
-     * @param fragetext   Der Fragetext.
+     * @param fragetext Der Fragetext.
      * @param fragepunkte Die Punkte pro richtiger Antwort.
-     * @require !fragetext.isEmpty()
-     * @require fragepunkte > 0
-     * @require abzugpunkte >= 0
      */
     public AbstractFrage(String fragetext, int fragepunkte, int abzugpunkte)
     {

@@ -9,10 +9,9 @@ import heinezen.stukla.materialien.choice.AbstractChoiceFrage;
 import heinezen.stukla.materialien.choice.ChoiceAntwort;
 
 /**
- * Eine Single-Choice-Frage, die mehrere Single-Choice-Antworten in
- * einem Array h�lt. AuswahlFragen werden verglichen, indem die Antworten
- * des Klienten mit den tats�chlichen �ber Wahrheitswerte verglichen
- * werden.
+ * Eine Single-Choice-Frage, die mehrere Single-Choice-Antworten in einem Array h�lt. AuswahlFragen
+ * werden verglichen, indem die Antworten des Klienten mit den tats�chlichen �ber Wahrheitswerte
+ * verglichen werden.
  *
  * @author Christophad
  */
@@ -21,9 +20,9 @@ public class AuswahlFrage extends AbstractChoiceFrage implements Frage
     /**
      * Erzeugt eine Frage mit Fragetext und mehreren Single-Choice-Antworten.
      *
-     * @param fragetext   Der Fragetext.
+     * @param fragetext Der Fragetext.
      * @param fragepunkte Die Punkte f�r eine richtige Antwort.
-     * @param antworten   Die m�glichen Antworten der Frage.
+     * @param antworten Die m�glichen Antworten der Frage.
      */
     public AuswahlFrage(String fragetext, int fragepunkte, int abzugpunkte,
                         ChoiceAntwort[] antworten)

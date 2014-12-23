@@ -7,43 +7,41 @@ import heinezen.stukla.materialien.AbstractAntwort;
 import heinezen.stukla.materialien.Antwort;
 
 /**
- * Eine Antwort, die von Multiple- oder Single-Choice-Fragen
- * benutzt werden kann. ChoiceAntworten haben einen Wahrheitswert,
- * der angibt ob diese wahr oder falsch sind.
- * 
- * @author Christophad
+ * Eine Antwort, die von Multiple- oder Single-Choice-Fragen benutzt werden kann. ChoiceAntworten
+ * haben einen Wahrheitswert, der angibt ob diese wahr oder falsch sind.
  *
+ * @author Christophad
  */
-public class ChoiceAntwort extends AbstractAntwort implements Antwort,Parcelable
+public class ChoiceAntwort extends AbstractAntwort implements Antwort, Parcelable
 {
-	/**
-	 * Wahrheitswert der Antwort.
-	 */
-	private final boolean _richtig;
-	
-	/**
-	 * Erzeugt eine Antwort mit gegebenem Text und Wahrheitswert. 
-	 * Au�erdem werden zu der Antwort ihre Punkte gespeichert.
-	 * 
-	 * @param antwortText Der Text der Antwort.
-	 * @param antwortWert Der Wahrheitswert der Antwort.
-	 */
-	public ChoiceAntwort(String antwortText, boolean antwortWert) 
-	{
-		super(antwortText);
+    /**
+     * Wahrheitswert der Antwort.
+     */
+    private final boolean _richtig;
 
-		_richtig = antwortWert;
-	}
-	
-	/**
-	 * Gibt zur�ck ob die Antwort wahr oder falsch ist.
-	 * 
-	 * @return Der Wahrheitswert der Antwort.
-	 */
-	public boolean istRichtig()
-	{
-		return _richtig;
-	}
+    /**
+     * Erzeugt eine Antwort mit gegebenem Text und Wahrheitswert. Au�erdem werden zu der Antwort
+     * ihre Punkte gespeichert.
+     *
+     * @param antwortText Der Text der Antwort.
+     * @param antwortWert Der Wahrheitswert der Antwort.
+     */
+    public ChoiceAntwort(String antwortText, boolean antwortWert)
+    {
+        super(antwortText);
+
+        _richtig = antwortWert;
+    }
+
+    /**
+     * Gibt zur�ck ob die Antwort wahr oder falsch ist.
+     *
+     * @return Der Wahrheitswert der Antwort.
+     */
+    public boolean istRichtig()
+    {
+        return _richtig;
+    }
 
     /**
      * Implementation von Parcelable

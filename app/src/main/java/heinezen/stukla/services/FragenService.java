@@ -3,11 +3,9 @@ package heinezen.stukla.services;
 import heinezen.stukla.materialien.Frage;
 
 /**
- * Ein Fragenservice zum Beantworten der Fragen und Berechnen der
- * Gesamtpunktzahl.
- * 
- * @author Christophad
+ * Ein Fragenservice zum Beantworten der Fragen und Berechnen der Gesamtpunktzahl.
  *
+ * @author Christophad
  */
 public interface FragenService
 {
@@ -22,9 +20,6 @@ public interface FragenService
      * Lasst den Klienten zu einer bestimmten Frage springen.
      *
      * @param index Index der angew�hlten Frage.
-     *
-     * @require index < _fragensatz.length
-     * @require index >= 0
      */
     public Frage getFrage(int index);
 

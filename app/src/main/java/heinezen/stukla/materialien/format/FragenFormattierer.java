@@ -39,7 +39,8 @@ public class FragenFormattierer
      * Erstellt eine Frage aus einem String.
      *
      * @param frage Der String der ausgelesen werden soll.
-     * @param path Der Pfad zu dem Ordner in dem die Frage liegt. Kann null sein falls keine Bild vorhanden ist.
+     * @param path Der Pfad zu dem Ordner in dem die Frage liegt. Kann null sein falls keine Bild
+     * vorhanden ist.
      *
      * @return Eine Frage.
      */
