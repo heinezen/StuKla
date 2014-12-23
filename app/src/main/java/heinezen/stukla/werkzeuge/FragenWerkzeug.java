@@ -31,11 +31,6 @@ public class FragenWerkzeug extends ActionBarActivity
     private FragenService _fragenService;
 
     /**
-     * Die UI des FragenWerkzeugs.
-     */
-    private FragenWerkzeugUI _uiFragenWerkzeug;
-
-    /**
      * Der Pager mit UI zum Wehseln der Fragen.
      */
     private ViewPager _fragenPager;
@@ -54,9 +49,6 @@ public class FragenWerkzeug extends ActionBarActivity
 
         _fragenPager = (ViewPager) findViewById(R.id._pager);
         _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), false));
-
-        _uiFragenWerkzeug = new FragenWerkzeugUI(
-                (android.widget.LinearLayout) findViewById(R.id._punkteAnzeige));
 
         registrierePager();
     }
@@ -107,11 +99,6 @@ public class FragenWerkzeug extends ActionBarActivity
         _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), true));
         registrierePager();
         _fragenPager.setCurrentItem(position);
-
-        int endergebnis = _fragenService.berechneGesamtpunktzahl();
-        int maxErgebnis = _fragenService.getMaxPunktzahl();
-
-        _uiFragenWerkzeug.beendeTest(endergebnis, maxErgebnis);
     }
 
     /**
