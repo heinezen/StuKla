@@ -140,8 +140,9 @@ public class FragenFragment extends Fragment
      */
     private void aendereAntworten()
     {
-        _antwortenWerkzeug.aktualisiereAntworten(_frage.getAntworttexte(),
-                _frage.getSpielerAntworten());
+        _antwortenWerkzeug
+                .aktualisiereAntworten(_frage.getAntworttexte(), _frage.getAntwortenWerte(),
+                        _frage.getSpielerAntworten());
     }
 
     @Override
