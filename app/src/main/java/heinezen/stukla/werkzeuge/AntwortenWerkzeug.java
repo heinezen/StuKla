@@ -2,6 +2,8 @@ package heinezen.stukla.werkzeuge;
 
 import android.widget.LinearLayout;
 
+import heinezen.stukla.fachwerte.enums.Fragetyp;
+
 public class AntwortenWerkzeug
 {
 	/**
@@ -12,22 +14,12 @@ public class AntwortenWerkzeug
 	/**
 	 * Der Fragetyp der angezeigten Frage.
 	 */
-	private String _aktuellerFragetyp;
+	private Fragetyp _aktuellerFragetyp;
 
 	public AntwortenWerkzeug(LinearLayout antwortenBereich)
 	{
 		_uiAntworten = new AntwortenUI(antwortenBereich);
 	}
-
-	/**
-	 * Gibt das Panel des Antwortebbereiches zur�ck.
-	 *
-	 * @return Der Panel des Antwortenbereichs
-	 */
-	public LinearLayout getPanel()
-    {
-	    return _uiAntworten.getAntwortenPanel();
-    }
 
 	/**
 	 * Aktualisiert den Antwortenbereich. Bedienelemente passen sich dem
@@ -56,9 +48,9 @@ public class AntwortenWerkzeug
 	/**
 	 * Setzt den aktuellen Fragetyp.
 	 *
-	 * @param fragetyp Der Fragetyp als String.
-	 */
-	public void setAktuellenFragetyp(String fragetyp)
+     * @param fragetyp Der Fragetyp als String.
+     */
+	public void setAktuellenFragetyp(Fragetyp fragetyp)
 	{
 		_aktuellerFragetyp = fragetyp;
 	}

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import heinezen.stukla.exceptions.CorruptQuestionException;
+import heinezen.stukla.fachwerte.enums.Fragetyp;
 import heinezen.stukla.materialien.Frage;
 import heinezen.stukla.materialien.OptionalFrage;
 import heinezen.stukla.materialien.choice.ChoiceAntwort;
@@ -214,7 +215,19 @@ public class FragenFormattierer
         String schreibFrage = "";
 
         schreibFrage += FRAGEN_TRENNER + "\n";
-        schreibFrage += FRAGE_TRENNER + frage.getFragetyp() + "\n";
+        Fragetyp fragetyp = frage.getFragetyp();
+        switch(fragetyp)
+        {
+            case KLICK:
+                schreibFrage += FRAGE_TRENNER + "Klick\n";
+                break;
+            case AUSWAHL:
+                schreibFrage += FRAGE_TRENNER + "Auswahl\n";
+                break;
+            case TEXT:
+                schreibFrage += FRAGE_TRENNER + "Text\n";
+                break;
+        }
         schreibFrage += FRAGE_TRENNER + frage.getFragetext() + "\n";
         schreibFrage += FRAGE_TRENNER + frage.getPunkteFuerAntwort() + "\n";
         schreibFrage += FRAGE_TRENNER + frage.getAbzugsPunkte() + "\n";

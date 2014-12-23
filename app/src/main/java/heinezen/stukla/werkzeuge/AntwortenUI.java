@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import heinezen.stukla.fachwerte.enums.Fragetyp;
+
 class AntwortenUI
 {
     /**
@@ -36,28 +38,17 @@ class AntwortenUI
     }
 
     /**
-     * Gibt den Antwortenbereich zur�ck.
-     *
-     * @return Den Antwortenbereich
-     */
-    public LinearLayout getAntwortenPanel()
-    {
-        return _antwortenBereich;
-    }
-
-    /**
      * Aktualisiert den Antwortenbereich. Bedienelemente passen sich dem
      * jeweiligen Fragetyp an.
-     *
-     * @param antwortTexte Die Texte der Antworten.
+     *  @param antwortTexte Die Texte der Antworten.
      * @param antwortWerte Die Werte der Antworten.
      * @param fragetyp Der Fragetyp der Frage.
      */
-    public void aktualisiereAntworten(String[] antwortTexte, Object antwortWerte, String fragetyp)
+    public void aktualisiereAntworten(String[] antwortTexte, Object antwortWerte, Fragetyp fragetyp)
     {
         switch(fragetyp)
         {
-            case "Klick":
+            case KLICK:
             {
                 _antwortenBereich.removeAllViews();
 
@@ -81,7 +72,7 @@ class AntwortenUI
                 }
                 break;
             }
-            case "Auswahl":
+            case AUSWAHL:
             {
                 _antwortenBereich.removeAllViews();
 
@@ -112,7 +103,7 @@ class AntwortenUI
 
                 break;
             }
-            case "Text":
+            case TEXT:
             {
                 _antwortenBereich.removeAllViews();
 
@@ -137,14 +128,14 @@ class AntwortenUI
      * dabei wird je nach Fragetyp ein unterschiedlicher R�ckgabetyp
      * verwendet. Beim casten ist auf den Fragetyp zu achten.
      *
-     * @param fragetyp
+     * @param fragetyp Der Fragetyp der Frage.
      * @return Ein Object mit den derzeitigen Antwortwerten.
      */
-    public Object getEingaben(String fragetyp)
+    public Object getEingaben(Fragetyp fragetyp)
     {
         switch(fragetyp)
         {
-            case "Klick":
+            case KLICK:
             {
                 CheckBox[] klickAntworten = new CheckBox[_antwortenBereich.getChildCount()];
 
@@ -162,7 +153,7 @@ class AntwortenUI
 
                 return werte;
             }
-            case "Auswahl":
+            case AUSWAHL:
             {
                 RadioGroup radioGruppe = (RadioGroup) _antwortenBereich.getChildAt(0);
 
@@ -176,7 +167,7 @@ class AntwortenUI
 
                 return werte;
             }
-            case "Text":
+            case TEXT:
             {
                 EditText textfeld = (EditText) _antwortenBereich.getChildAt(0);
 

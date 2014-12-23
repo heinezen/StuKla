@@ -3,6 +3,7 @@ package heinezen.stukla.materialien.choice.multiChoice;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import heinezen.stukla.fachwerte.enums.Fragetyp;
 import heinezen.stukla.materialien.Frage;
 import heinezen.stukla.materialien.choice.AbstractChoiceFrage;
 import heinezen.stukla.materialien.choice.ChoiceAntwort;
@@ -85,9 +86,9 @@ public class KlickFrage extends AbstractChoiceFrage implements Frage
 	}
 
 	@Override
-    public String getFragetyp()
+    public Fragetyp getFragetyp()
     {
-	    return "Klick";
+	    return Fragetyp.KLICK;
     }
 
     /**

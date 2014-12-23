@@ -3,6 +3,8 @@ package heinezen.stukla.materialien;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import heinezen.stukla.fachwerte.enums.Fragetyp;
+
 public abstract class AbstractFrage implements Parcelable
 {
     /**
@@ -84,7 +86,7 @@ public abstract class AbstractFrage implements Parcelable
      *
      * @return Der Fragetyp
      */
-    public abstract String getFragetyp();
+    public abstract Fragetyp getFragetyp();
 
     /**
      * Implementation von Parcelable

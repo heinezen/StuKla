@@ -2,6 +2,8 @@ package heinezen.stukla.materialien;
 
 import android.os.Parcelable;
 
+import heinezen.stukla.fachwerte.enums.Fragetyp;
+
 /**
  * Stellt eine Frage bereit, die ihren Fragetext ausgeben kann, sowie
  * die Texte ihrer Antworten. Au�erdem k�nnen Antworten vom Klienten verglichen
@@ -83,5 +85,5 @@ public interface Frage extends Parcelable
 	 * 
 	 * @return Der Fragetyp
 	 */
-	public abstract String getFragetyp();
+	public Fragetyp getFragetyp();
 }

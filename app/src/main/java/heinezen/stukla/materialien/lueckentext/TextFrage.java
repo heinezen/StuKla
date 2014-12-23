@@ -3,6 +3,7 @@ package heinezen.stukla.materialien.lueckentext;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import heinezen.stukla.fachwerte.enums.Fragetyp;
 import heinezen.stukla.materialien.Frage;
 
 /**
@@ -42,9 +43,9 @@ public class TextFrage extends AbstractTextFrage implements Frage
     }
 
     @Override
-    public String getFragetyp()
+    public Fragetyp getFragetyp()
     {
-        return "Text";
+        return Fragetyp.TEXT;
     }
 
     /**
