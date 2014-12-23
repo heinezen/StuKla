@@ -25,12 +25,13 @@ public class AntwortenWerkzeug
      * Aktualisiert den Antwortenbereich. Bedienelemente passen sich dem jeweiligen Fragetyp an.
      *
      * @param antwortTexte Die Texte der Antworten.
-     * @param richtigeAntwortenWerte Die richtigen Werte der Antworten.
+     * @param antwortenWerte Die tatsächlichen Werte der Antworten.
      * @param testAntwortenWerte Die im Test erhaltenen Werte der Antworten.
      */
-    public void aktualisiereAntworten(String[] antwortTexte, Object richtigeAntwortenWerte, Object testAntwortenWerte)
+    public void aktualisiereAntworten(String[] antwortTexte, Object antwortenWerte, Object testAntwortenWerte)
     {
-        _uiAntworten.aktualisiereAntworten(antwortTexte, testAntwortenWerte, _aktuellerFragetyp);
+        _uiAntworten.aktualisiereAntworten(antwortTexte, antwortenWerte,
+                testAntwortenWerte, _aktuellerFragetyp);
     }
 
     /**

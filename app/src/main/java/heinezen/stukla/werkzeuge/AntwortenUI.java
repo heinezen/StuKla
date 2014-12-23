@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import heinezen.stukla.fachwerte.enums.Fragetyp;
 
@@ -41,10 +42,12 @@ class AntwortenUI
      * Aktualisiert den Antwortenbereich. Bedienelemente passen sich dem jeweiligen Fragetyp an.
      *
      * @param antwortTexte Die Texte der Antworten.
-     * @param antwortWerte Die Werte der Antworten.
+     * @param antwortenWerte Die tatsächlichen Werte der Antworten.
+     * @param testAntwortenWerte Die Werte der im Test gegebenen Antworten.
      * @param fragetyp Der Fragetyp der Frage.
      */
-    public void aktualisiereAntworten(String[] antwortTexte, Object antwortWerte, Fragetyp fragetyp)
+    public void aktualisiereAntworten(String[] antwortTexte, Object antwortenWerte,
+                                      Object testAntwortenWerte, Fragetyp fragetyp)
     {
         switch(fragetyp)
         {
@@ -52,7 +55,7 @@ class AntwortenUI
             {
                 _antwortenBereich.removeAllViews();
 
-                boolean[] neueAntwortWerte = (boolean[]) antwortWerte;
+                boolean[] neueAntwortWerte = (boolean[]) testAntwortenWerte;
 
                 for(int i = 0; i < antwortTexte.length; ++i)
                 {
@@ -64,9 +67,15 @@ class AntwortenUI
                     if(_istBeendet)
                     {
                         neueCheckBox.setEnabled(false);
-                        if(neueAntwortWerte[i])
+
+                        boolean[] werte = (boolean[]) antwortenWerte;
+                        if(werte[i])
                         {
                             neueCheckBox.setBackgroundColor(Color.GREEN);
+                        }
+                        else if(!werte[i] && neueAntwortWerte[i])
+                        {
+                            neueCheckBox.setBackgroundColor(Color.RED);
                         }
                     }
                 }
@@ -76,7 +85,7 @@ class AntwortenUI
             {
                 _antwortenBereich.removeAllViews();
 
-                boolean[] neueAntwortWerte = (boolean[]) antwortWerte;
+                boolean[] neueAntwortWerte = (boolean[]) testAntwortenWerte;
                 RadioGroup radioGruppe = new RadioGroup(_antwortenBereich.getContext());
 
                 RadioGroup.LayoutParams param = new RadioGroup.LayoutParams(
@@ -94,9 +103,15 @@ class AntwortenUI
                     if(_istBeendet)
                     {
                         neuerRadioButton.setEnabled(false);
-                        if(neueAntwortWerte[i])
+
+                        boolean[] werte = (boolean[]) antwortenWerte;
+                        if(werte[i])
                         {
                             neuerRadioButton.setBackgroundColor(Color.GREEN);
+                        }
+                        else if(!werte[i] && neueAntwortWerte[i])
+                        {
+                            neuerRadioButton.setBackgroundColor(Color.RED);
                         }
                     }
                 }
@@ -108,15 +123,42 @@ class AntwortenUI
             {
                 _antwortenBereich.removeAllViews();
 
-                String neueAntwortWerte = (String) antwortWerte;
+                String neueAntwort = (String) testAntwortenWerte;
                 EditText textfeld = new EditText(_antwortenBereich.getContext());
-                textfeld.setText(neueAntwortWerte);
+                textfeld.setText(neueAntwort);
 
                 _antwortenBereich.addView(textfeld);
 
                 if(_istBeendet)
                 {
                     textfeld.setEnabled(false);
+
+                    String[] werte = (String[]) antwortenWerte;
+                    boolean richtigeAntwort = false;
+                    for(String antwort : werte)
+                    {
+                        if(!antwort.toLowerCase().equals(neueAntwort.toLowerCase()))
+                        {
+                            TextView antwortTextView = new TextView(_antwortenBereich.getContext());
+                            antwortTextView.setText(antwort);
+                            antwortTextView.setTextColor(Color.GREEN);
+
+                            _antwortenBereich.addView(antwortTextView);
+                        }
+                        else
+                        {
+                            richtigeAntwort = true;
+                        }
+                    }
+
+                    if(richtigeAntwort)
+                    {
+                        textfeld.setTextColor(Color.GREEN);
+                    }
+                    else
+                    {
+                        textfeld.setTextColor(Color.RED);
+                    }
                 }
 
                 break;
