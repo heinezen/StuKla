@@ -29,12 +29,6 @@ public interface FragenService
     public Frage getFrage(int index);
 
     /**
-     * Bringt die Fragen aus dem Fragensatz in eine zuf�llige
-     * Reihenfolge.
-     */
-    public Frage[] mischeFragensatz(Frage[] fragensatz);
-
-    /**
      * Gibt die maximale Punktzahl f�r alle Fragen zur�ck.
      *
      * @return Maximal erreichbare Punktzahl aller Fragen.

@@ -4,9 +4,8 @@ import heinezen.stukla.materialien.Frage;
 
 /**
  * Implementiert einen Fragenservice.
- * 
- * @author Christophad
  *
+ * @author Christophad
  */
 public class FragenServiceImpl implements FragenService
 {
@@ -15,9 +14,16 @@ public class FragenServiceImpl implements FragenService
      */
     private final Frage[] _fragensatz;
 
-    public FragenServiceImpl(Frage[] fragensatz)
+    public FragenServiceImpl(Frage[] fragensatz, boolean mischen)
     {
-        _fragensatz = mischeFragensatz(fragensatz);
+        if(mischen)
+        {
+            _fragensatz = mischeFragensatz(fragensatz);
+        }
+        else
+        {
+            _fragensatz = fragensatz;
+        }
     }
 
     /**
@@ -38,10 +44,10 @@ public class FragenServiceImpl implements FragenService
     }
 
     /**
-     * Berechnet die Punktzahl des Spielers f�r eine der Fragen
-     * im gespeicherten Fragensatz.
+     * Berechnet die Punktzahl des Spielers f�r eine der Fragen im gespeicherten Fragensatz.
      *
      * @param index Index der Frage, f�r die die Punktzahl berechnet werden soll.
+     *
      * @return Punktzahl f�r die Frage.
      */
     private int berechnePunktzahlFuerFrage(int index)
@@ -58,8 +64,7 @@ public class FragenServiceImpl implements FragenService
         return _fragensatz[index];
     }
 
-    @Override
-    public Frage[] mischeFragensatz(Frage[] fragensatz)
+    private Frage[] mischeFragensatz(Frage[] fragensatz)
     {
         Frage[] tempFragensatz = fragensatz.clone();
 
