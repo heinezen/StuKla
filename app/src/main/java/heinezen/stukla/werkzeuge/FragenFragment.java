@@ -18,7 +18,7 @@ public class FragenFragment extends Fragment
     private Frage _frage;
 
     private AntwortenWerkzeug _antwortenWerkzeug;
-    private FragenWerkzeugUI _uiFragenWerkzeug;
+    private FragenFragmentUI _uiFragenWerkzeug;
 
     /**
      * Erzeugt eine neue Instanz des FragenFragments.
@@ -60,8 +60,8 @@ public class FragenFragment extends Fragment
 
         _antwortenWerkzeug = new AntwortenWerkzeug(
                 (LinearLayout) rootView.findViewById(R.id._antwortenBereich));
-        _uiFragenWerkzeug = new FragenWerkzeugUI(
-                (LinearLayout) rootView.findViewById(R.id._anzeige), _antwortenWerkzeug.getPanel());
+        _uiFragenWerkzeug = new FragenFragmentUI(
+                (LinearLayout) rootView.findViewById(R.id._anzeige));
 
         _antwortenWerkzeug.setAktuellenFragetyp(_frage.getFragetyp());
 
@@ -101,7 +101,7 @@ public class FragenFragment extends Fragment
     }
 
     /**
-     * �ndert den angezeigten Fragebereich.
+     * Ändert den angezeigten Fragebereich.
      */
     private void aendereFrage()
     {
@@ -109,7 +109,7 @@ public class FragenFragment extends Fragment
     }
 
     /**
-     * �ndert den angezeigten Quelltext
+     * Ändert den angezeigten Quelltext
      */
     private void aendereQuelltext()
     {
@@ -125,11 +125,18 @@ public class FragenFragment extends Fragment
     }
 
     /**
-     * �ndert den angezeigten Antwortenbereich.
+     * Ändert den angezeigten Antwortenbereich.
      */
     private void aendereAntworten()
     {
         _antwortenWerkzeug.aktualisiereAntworten(_frage.getAntworttexte(),
                 _frage.getSpielerAntworten());
+    }
+
+    @Override
+    public void onPause()
+    {
+        _frage.aktualisiereSpielerAntworten(_antwortenWerkzeug.getEingaben());
+        super.onDestroy();
     }
 }
