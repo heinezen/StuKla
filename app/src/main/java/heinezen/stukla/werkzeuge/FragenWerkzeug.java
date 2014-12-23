@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import heinezen.stukla.R;
 import heinezen.stukla.materialien.Frage;
@@ -15,8 +16,8 @@ import heinezen.stukla.services.FragenService;
 import heinezen.stukla.services.FragenServiceImpl;
 
 /**
- * Das FragenWerkzeug benutzt die GUI, um Fragen anzuzeigen und den Test
- * abzugeben. Es ist zus�tzlich ein Observer der GUI.
+ * Das FragenWerkzeug benutzt die GUI, um Fragen anzuzeigen und den Test abzugeben. Es ist
+ * zus�tzlich ein Observer der GUI.
  *
  * @author Christophad
  */
@@ -67,6 +68,20 @@ public class FragenWerkzeug extends ActionBarActivity
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.action_beenden:
+                testAbgeben();
+                item.setEnabled(false);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     /**
      * Registriert die Listener des Pagers.
      */
@@ -83,8 +98,8 @@ public class FragenWerkzeug extends ActionBarActivity
     }
 
     /**
-     * Gibt den Test ab und nennt die Gesamtpunktzahl. Au�erdem werden alle
-     * AntwortElemente gesperrt.
+     * Gibt den Test ab und nennt die Gesamtpunktzahl. Au�erdem werden alle AntwortElemente
+     * gesperrt.
      */
     private void testAbgeben()
     {
