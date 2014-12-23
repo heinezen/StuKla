@@ -33,4 +33,35 @@
 ###FRG###Hallo Welt
 ###FRG###Hello World
 
+###FRA###
+###FRG###Klick
+###FRG###Kreuzen Sie alle richtigen Antworten an.
+###FRG###3
+###FRG###0
+###FRG###true###BLD###TEST-25012015-AFD.jpg
+###FRG###false
+###FRG###Bernd spielt Blöckflöte###ANT###false
+###FRG###Er war in der CDU###ANT###true
+###FRG###Hat keine Freunde###ANT###true
+###FRG###Hat den Nobelpreis für Physik###ANT###false
+###FRG###Er ist wunderschön###ANT###false
+###FRG###Seine jetzige Partei ist Bündnis 90/Die Grünen###ANT###false
+
+###FRA###
+###FRG###Auswahl
+###FRG###Bernd das Brot?
+###FRG###3
+###FRG###0
+###FRG###true###BLD###TEST-25012015-AFD.jpg
+###FRG###false
+###FRG###AFD###ANT###true
+###FRG###CDU###ANT###false
+###FRG###SPD###ANT###false
+###FRG###DVP###ANT###false
+###FRG###LINKE###ANT###false
+###FRG###Grüne###ANT###false
+###FRG###CSU###ANT###false
+###FRG###KPD###ANT###false
+###FRG###Die schlauen Blauen###ANT###false
+###FRG###NSDAP###ANT###false
 
