@@ -23,8 +23,6 @@ import heinezen.stukla.werkzeuge.einleser.FragenEinleser;
 
 public class TestAuswahlWerkzeug extends ActionBarActivity
 {
-    public static final String VERSION = "0.7";
-
     private File TEST_DATEIEN_ORDNER;
 
     private Spinner _testAuswahl;
@@ -53,9 +51,6 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         if(testDateien.isEmpty())
         {
             testDateien.add("Keine Dateien vorhanden");
-
-            testDateien.add("Test 1");
-            testDateien.add("Test 2");
         }
 
         String[] array = new String[testDateien.size()];
@@ -148,7 +143,7 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
 
     private void erzeugeAuswahlBereich()
     {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_dropdown_item, _testDateien);
 
         _testAuswahl.setAdapter(adapter);
