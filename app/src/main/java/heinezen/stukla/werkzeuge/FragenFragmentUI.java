@@ -10,40 +10,34 @@ import java.io.File;
 
 class FragenFragmentUI
 {
-    public static final String NAME = "SE1-Test";
-
     private TextView _fragetextLabel;
     private ImageView _bildLabel;
     private TextView _quelltextLabel;
 
     private LinearLayout _anzeige;
-    private LinearLayout _frageBereich;
     private LinearLayout _bildBereich;
-    private LinearLayout _quelltextBereich;
-    private LinearLayout _antwortenBereich;
 
     /**
      * Erstellt eine neue GUI f�r ein FragenWerkzeug und f�gt dieses
      * zu den Observern hinzu.
      *
-     * @param antwortenPanel
+     * @param  anzeige Der Frame in dem das Fragment platziert wird.
      */
-    public FragenFragmentUI(LinearLayout anzeige, LinearLayout antwortenPanel)
+    public FragenFragmentUI(LinearLayout anzeige)
     {
-        initGUI(anzeige, antwortenPanel);
+        initGUI(anzeige);
     }
 
     /**
-     * Initilisiert die Interfaceelemente der GUI.
+     * Initialisiert die Interfaceelemente der GUI.
      */
-    private void initGUI(LinearLayout anzeige, LinearLayout antwortenPanel)
+    private void initGUI(LinearLayout anzeige)
     {
         _anzeige = anzeige;
 
         erzeugeFrageBereich();
         erzeugeBildBereich();
         erzeugeQuelltextBereich();
-        erzeugeAntwortenBereich(antwortenPanel);
     }
 
     /**
@@ -60,11 +54,11 @@ class FragenFragmentUI
     }
 
     /**
-     * Erzeugt einen Fragenbereich mit einem JLabel
+     * Erzeugt einen Fragebereich mit einem JLabel
      */
     private void erzeugeFrageBereich()
     {
-        _frageBereich = new LinearLayout(_anzeige.getContext());
+        LinearLayout _frageBereich = new LinearLayout(_anzeige.getContext());
         _anzeige.addView(_frageBereich, 0);
 
         _fragetextLabel = new TextView(_anzeige.getContext());
@@ -77,7 +71,7 @@ class FragenFragmentUI
      */
     private void erzeugeQuelltextBereich()
     {
-        _quelltextBereich = new LinearLayout(_anzeige.getContext());
+        LinearLayout _quelltextBereich = new LinearLayout(_anzeige.getContext());
         _anzeige.addView(_quelltextBereich, 2);
 
         _quelltextLabel = new TextView(_anzeige.getContext());
@@ -88,14 +82,6 @@ class FragenFragmentUI
     }
 
     /**
-     * Erzeugt einen Antwortenbereich.
-     */
-    private void erzeugeAntwortenBereich(LinearLayout antwortenPanel)
-    {
-        _antwortenBereich = antwortenPanel;
-    }
-
-    /**
      * Aktualisiert den Text im Fragebereich.
      *
      * @param neuerFragetext Der neue Fragetext.
@@ -103,20 +89,6 @@ class FragenFragmentUI
     public void aktualisiereFrage(String neuerFragetext)
     {
         _fragetextLabel.setText(neuerFragetext);
-    }
-
-    /**
-     * Beendet den Test und gibt die erreichte Punktzahl aus.
-     *
-     * @param endergebnis  Erreichte Punktzahl
-     * @param maxPunktzahl Die maximal erreichbare Punktzahl
-     */
-    public void beendeTest(int endergebnis, int maxPunktzahl)
-    {
-        TextView ergebnis = new TextView(_anzeige.getContext());
-        ergebnis.setText("Erreichte Punktzahl: " + endergebnis + "/" + maxPunktzahl);
-
-        _anzeige.addView(ergebnis);
     }
 
     /**
