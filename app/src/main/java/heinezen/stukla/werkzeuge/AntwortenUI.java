@@ -1,6 +1,8 @@
 package heinezen.stukla.werkzeuge;
 
+import android.graphics.Color;
 import android.text.Editable;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -17,11 +19,11 @@ class AntwortenUI
     /**
      * Wird auf true gesetzt sobald der Test beendet wurde.
      */
-    private boolean _testBeendet;
+    private boolean _istBeendet;
 
     public AntwortenUI(LinearLayout antwortenBereich)
     {
-        _testBeendet = false;
+        _istBeendet = false;
         erzeugeAntwortenBereich(antwortenBereich);
     }
 
@@ -47,9 +49,9 @@ class AntwortenUI
      * Aktualisiert den Antwortenbereich. Bedienelemente passen sich dem
      * jeweiligen Fragetyp an.
      *
-     * @param antwortTexte Die neuen Texte der Antworten.
-     * @param antwortWerte Die neuen Werte der Antworten.
-     * @param fragetyp
+     * @param antwortTexte Die Texte der Antworten.
+     * @param antwortWerte Die Werte der Antworten.
+     * @param fragetyp Der Fragetyp der Frage.
      */
     public void aktualisiereAntworten(String[] antwortTexte, Object antwortWerte, String fragetyp)
     {
@@ -68,9 +70,13 @@ class AntwortenUI
                     neueCheckBox.setChecked(neueAntwortWerte[i]);
                     _antwortenBereich.addView(neueCheckBox);
 
-                    if(_testBeendet)
+                    if(_istBeendet)
                     {
                         neueCheckBox.setEnabled(false);
+                        if(neueAntwortWerte[i])
+                        {
+                            neueCheckBox.setBackgroundColor(Color.GREEN);
+                        }
                     }
                 }
                 break;
@@ -82,16 +88,24 @@ class AntwortenUI
                 boolean[] neueAntwortWerte = (boolean[]) antwortWerte;
                 RadioGroup radioGruppe = new RadioGroup(_antwortenBereich.getContext());
 
+                RadioGroup.LayoutParams param = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
+
                 for(int i = 0; i < antwortTexte.length; ++i)
                 {
                     RadioButton neuerRadioButton = new RadioButton(_antwortenBereich.getContext());
+                    neuerRadioButton.setLayoutParams(param);
                     neuerRadioButton.setText(antwortTexte[i]);
                     radioGruppe.addView(neuerRadioButton);
                     neuerRadioButton.setChecked(neueAntwortWerte[i]);
 
-                    if(_testBeendet)
+                    if(_istBeendet)
                     {
                         neuerRadioButton.setEnabled(false);
+                        if(neueAntwortWerte[i])
+                        {
+                            neuerRadioButton.setBackgroundColor(Color.GREEN);
+                        }
                     }
                 }
                 _antwortenBereich.addView(radioGruppe);
@@ -108,7 +122,7 @@ class AntwortenUI
 
                 _antwortenBereich.addView(textfeld);
 
-                if(_testBeendet)
+                if(_istBeendet)
                 {
                     textfeld.setEnabled(false);
                 }
@@ -181,7 +195,7 @@ class AntwortenUI
      */
     public void setzeBeendet()
     {
-        _testBeendet = true;
+        _istBeendet = true;
         sperreAntwortenBereich();
     }
 

@@ -20,7 +20,7 @@ public class FragenFragment extends Fragment
     private boolean _istBeendet;
 
     private AntwortenWerkzeug _antwortenWerkzeug;
-    private FragenFragmentUI _uiFragenWerkzeug;
+    private FragenFragmentUI _uiFragenFragment;
 
     /**
      * Erzeugt eine neue Instanz des FragenFragments.
@@ -65,13 +65,16 @@ public class FragenFragment extends Fragment
         _antwortenWerkzeug = new AntwortenWerkzeug(
                 (LinearLayout) rootView.findViewById(R.id._antwortenBereich));
 
-        if(_istBeendet)
-            _antwortenWerkzeug.setzeBeendet();
+        _antwortenWerkzeug.setAktuellenFragetyp(_frage.getFragetyp());
 
-        _uiFragenWerkzeug = new FragenFragmentUI(
+        _uiFragenFragment = new FragenFragmentUI(
                 (LinearLayout) rootView.findViewById(R.id._anzeige));
 
-        _antwortenWerkzeug.setAktuellenFragetyp(_frage.getFragetyp());
+        if(_istBeendet)
+        {
+            _antwortenWerkzeug.setzeBeendet();
+            _uiFragenFragment.setzeBeendet(_frage.vergleicheAntworten(), _frage.getMaxPunktzahl());
+        }
 
         aendereElemente();
 
@@ -95,16 +98,16 @@ public class FragenFragment extends Fragment
         {
             if(((OptionalFrage) _frage).hatBild())
             {
-                _uiFragenWerkzeug.aktualisiereBild(((OptionalFrage) _frage).getBild());
+                _uiFragenFragment.aktualisiereBild(((OptionalFrage) _frage).getBild());
             }
             else
             {
-                _uiFragenWerkzeug.entferneBild();
+                _uiFragenFragment.entferneBild();
             }
         }
         else
         {
-            _uiFragenWerkzeug.entferneBild();
+            _uiFragenFragment.entferneBild();
         }
     }
 
@@ -113,7 +116,7 @@ public class FragenFragment extends Fragment
      */
     private void aendereFrage()
     {
-        _uiFragenWerkzeug.aktualisiereFrage(_frage.getFragetext());
+        _uiFragenFragment.aktualisiereFrage(_frage.getFragetext());
     }
 
     /**
@@ -123,12 +126,12 @@ public class FragenFragment extends Fragment
     {
         if(_frage instanceof OptionalFrage)
         {
-            _uiFragenWerkzeug.aktualisiereQuelltext(
+            _uiFragenFragment.aktualisiereQuelltext(
                     ((OptionalFrage) _frage).getQuelltext());
         }
         else
         {
-            _uiFragenWerkzeug.aktualisiereQuelltext("");
+            _uiFragenFragment.aktualisiereQuelltext("");
         }
     }
 

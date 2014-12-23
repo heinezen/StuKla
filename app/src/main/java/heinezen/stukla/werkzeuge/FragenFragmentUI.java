@@ -123,4 +123,18 @@ class FragenFragmentUI
     {
         _bildBereich.removeView(_bildLabel);
     }
+
+    /**
+     * Erzeugt eine Übersicht für die Frage, in der die erreichten Punkte angezeigt werden.
+     *
+     * @param endPunktzahl Erreichte Punktzahl.
+     * @param maxPunktzahl Maximale Punktzahl.
+     */
+    public void setzeBeendet(int endPunktzahl, int maxPunktzahl)
+    {
+        TextView ergebnis = new TextView(_anzeige.getContext());
+        ergebnis.setText(String.format("Erreichte Punktzahl: %s/%s", endPunktzahl, maxPunktzahl));
+
+        _anzeige.addView(ergebnis);
+    }
 }
