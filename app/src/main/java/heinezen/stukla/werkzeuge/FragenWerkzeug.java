@@ -1,5 +1,7 @@
 package heinezen.stukla.werkzeuge;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -27,6 +29,7 @@ public class FragenWerkzeug extends ActionBarActivity
     private static final String ARG_ENDERGEBNIS = "Endergebnis";
     private static final String ARG_MAXERGEBNIS = "MaxErgebnis";
     private final String ARG_FRAGEN = "Fragen";
+    
     /**
      * Der FragenService.
      */
@@ -83,8 +86,11 @@ public class FragenWerkzeug extends ActionBarActivity
         switch(item.getItemId())
         {
             case R.id.action_beenden:
-                item.setEnabled(false);
                 testAbgeben();
+                item.setEnabled(false);
+                return true;
+            case R.id.action_abbrechen:
+                onBackPressed();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -116,6 +122,41 @@ public class FragenWerkzeug extends ActionBarActivity
         intent.putExtra(ARG_MAXERGEBNIS, _fragenService.getMaxPunktzahl());
 
         startActivity(intent);
+    }
+    
+    @Override
+    public void onBackPressed()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("Test abbrechen und zur Auswahl zurückkehren?");
+        builder.setTitle("Abbrechen");
+
+        builder.setPositiveButton("Ja", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                returnToStart();
+            }
+        });
+        builder.setNegativeButton("Nein", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+
+        dialog.show();
+    }
+
+    private void returnToStart()
+    {
+        super.onBackPressed();
     }
 
     /**
