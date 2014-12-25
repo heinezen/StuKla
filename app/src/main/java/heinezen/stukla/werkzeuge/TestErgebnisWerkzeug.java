@@ -24,9 +24,10 @@ public class TestErgebnisWerkzeug extends ActionBarActivity
 
         _ergebnis = getIntent().getIntExtra(ARG_ENDERGEBNIS, 0);
         _maxErgebnis = getIntent().getIntExtra(ARG_MAXERGEBNIS, 0);
+        int prozent = 100 * (_ergebnis / _maxErgebnis);
 
         TextView view = (TextView) findViewById(R.id._ergebisAnzeigeLabel);
-        view.setText(String.format("%d/%d", _ergebnis, _maxErgebnis));
+        view.setText(String.format("%d/%d Punkte (%d%%)", _ergebnis, _maxErgebnis, prozent));
 
         view = (TextView) findViewById(R.id._bestandenAngabeLabel);
         if(_ergebnis >= _maxErgebnis / 2)
