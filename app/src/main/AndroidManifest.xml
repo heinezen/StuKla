@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="heinezen.stukla" >
+<manifest
+    package="heinezen.stukla"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" >
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE">
     </uses-permission>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".werkzeuge.FragenWerkzeug"
-            android:label="@string/title_activity_test_auswahl" >
+            android:label="@string/title_activity_test_auswahl">
         </activity>
         <activity
             android:name=".werkzeuge.TestAuswahlWerkzeug"
-            android:label="Testauswahl" >
+            android:label="Testauswahl">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".werkzeuge.TestErgebnisWerkzeug"
-            android:label="@string/title_activity_test_ergebnis_werkzeug" >
+            android:label="@string/title_activity_test_ergebnis_werkzeug">
         </activity>
     </application>
 
