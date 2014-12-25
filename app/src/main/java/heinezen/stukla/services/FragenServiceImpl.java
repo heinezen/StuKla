@@ -1,5 +1,7 @@
 package heinezen.stukla.services;
 
+import java.util.Random;
+
 import heinezen.stukla.materialien.Frage;
 
 /**
@@ -24,6 +26,22 @@ public class FragenServiceImpl implements FragenService
         {
             _fragensatz = fragensatz;
         }
+    }
+
+    private Frage[] mischeFragensatz(Frage[] fragensatz)
+    {
+        Frage[] tempFragensatz = fragensatz.clone();
+
+        for(int i = 0; i < tempFragensatz.length; ++i)
+        {
+            Random zufall = new Random();
+            int random = zufall.nextInt(tempFragensatz.length);
+            Frage tempFrage = tempFragensatz[i];
+            tempFragensatz[i] = tempFragensatz[random];
+            tempFragensatz[random] = tempFrage;
+        }
+
+        return tempFragensatz;
     }
 
     /**
@@ -62,21 +80,6 @@ public class FragenServiceImpl implements FragenService
         assert index >= 0 : "Vorbedingung verletzt : index >= 0";
 
         return _fragensatz[index];
-    }
-
-    private Frage[] mischeFragensatz(Frage[] fragensatz)
-    {
-        Frage[] tempFragensatz = fragensatz.clone();
-
-        for(int i = 0; i < tempFragensatz.length; ++i)
-        {
-            int random = (int) (Math.random() * (tempFragensatz.length - 1));
-            Frage tempFrage = tempFragensatz[i];
-            tempFragensatz[i] = tempFragensatz[random];
-            tempFragensatz[random] = tempFrage;
-        }
-
-        return tempFragensatz;
     }
 
     @Override

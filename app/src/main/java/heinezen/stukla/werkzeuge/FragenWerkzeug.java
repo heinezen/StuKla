@@ -50,7 +50,7 @@ public class FragenWerkzeug extends ActionBarActivity
         Frage[] fragen = new Frage[parc.length];
         System.arraycopy(parc, 0, fragen, 0, parc.length);
 
-        _fragenService = new FragenServiceImpl(fragen, false);
+        _fragenService = new FragenServiceImpl(fragen, true);
 
         _fragenPager = (ViewPager) findViewById(R.id._pager);
         _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), false));
@@ -111,19 +111,6 @@ public class FragenWerkzeug extends ActionBarActivity
         erzeugeTestErgebnisWerkzeug();
     }
 
-    /**
-     * Startet die Anzeige für das Ergebnis des Tests.
-     */
-    private void erzeugeTestErgebnisWerkzeug()
-    {
-        Intent intent = new Intent(this, TestErgebnisWerkzeug.class);
-
-        intent.putExtra(ARG_ENDERGEBNIS, _fragenService.berechneGesamtpunktzahl());
-        intent.putExtra(ARG_MAXERGEBNIS, _fragenService.getMaxPunktzahl());
-
-        startActivity(intent);
-    }
-    
     @Override
     public void onBackPressed()
     {
@@ -145,13 +132,26 @@ public class FragenWerkzeug extends ActionBarActivity
             @Override
             public void onClick(DialogInterface dialog, int which)
             {
-                
+
             }
         });
 
         AlertDialog dialog = builder.create();
 
         dialog.show();
+    }
+
+    /**
+     * Startet die Anzeige für das Ergebnis des Tests.
+     */
+    private void erzeugeTestErgebnisWerkzeug()
+    {
+        Intent intent = new Intent(this, TestErgebnisWerkzeug.class);
+
+        intent.putExtra(ARG_ENDERGEBNIS, _fragenService.berechneGesamtpunktzahl());
+        intent.putExtra(ARG_MAXERGEBNIS, _fragenService.getMaxPunktzahl());
+
+        startActivity(intent);
     }
 
     private void returnToStart()
