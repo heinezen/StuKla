@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -28,7 +29,8 @@ public class FragenWerkzeug extends ActionBarActivity
 {
     private static final String ARG_ENDERGEBNIS = "Endergebnis";
     private static final String ARG_MAXERGEBNIS = "MaxErgebnis";
-    private final String ARG_FRAGEN = "Fragen";
+    private static final String ARG_FRAGEN = "Fragen";
+    private static final String ARG_ZEIT = "Zeit";
     
     /**
      * Der FragenService.
@@ -50,12 +52,35 @@ public class FragenWerkzeug extends ActionBarActivity
         Frage[] fragen = new Frage[parc.length];
         System.arraycopy(parc, 0, fragen, 0, parc.length);
 
+        erzeugeCountdown();
+
         _fragenService = new FragenServiceImpl(fragen, true);
 
         _fragenPager = (ViewPager) findViewById(R.id._pager);
         _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), false));
 
         registrierePager();
+    }
+
+    private void erzeugeCountdown()
+    {
+        int minuten = getIntent().getIntExtra(ARG_ZEIT, 60);
+        int millisekunden = minuten * 60 * 1000;
+
+        new CountDownTimer(millisekunden, 1000)
+        {
+            @Override
+            public void onTick(long millisUntilFinished)
+            {
+
+            }
+
+            @Override
+            public void onFinish()
+            {
+                testAbgeben();
+            }
+        }.start();
     }
 
     /**
@@ -73,6 +98,33 @@ public class FragenWerkzeug extends ActionBarActivity
         });
     }
 
+    /**
+     * Gibt den Test ab und nennt die Gesamtpunktzahl. Au�erdem werden alle AntwortElemente
+     * gesperrt.
+     */
+    private void testAbgeben()
+    {
+        int position = _fragenPager.getCurrentItem();
+        _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), true));
+        registrierePager();
+        _fragenPager.setCurrentItem(position);
+
+        erzeugeTestErgebnisWerkzeug();
+    }
+
+    /**
+     * Startet die Anzeige für das Ergebnis des Tests.
+     */
+    private void erzeugeTestErgebnisWerkzeug()
+    {
+        Intent intent = new Intent(this, TestErgebnisWerkzeug.class);
+
+        intent.putExtra(ARG_ENDERGEBNIS, _fragenService.berechneGesamtpunktzahl());
+        intent.putExtra(ARG_MAXERGEBNIS, _fragenService.getMaxPunktzahl());
+
+        startActivity(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -86,8 +138,8 @@ public class FragenWerkzeug extends ActionBarActivity
         switch(item.getItemId())
         {
             case R.id.action_beenden:
-                testAbgeben();
                 item.setEnabled(false);
+                testAbgeben();
                 return true;
             case R.id.action_abbrechen:
                 onBackPressed();
@@ -95,20 +147,6 @@ public class FragenWerkzeug extends ActionBarActivity
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    /**
-     * Gibt den Test ab und nennt die Gesamtpunktzahl. Au�erdem werden alle AntwortElemente
-     * gesperrt.
-     */
-    private void testAbgeben()
-    {
-        int position = _fragenPager.getCurrentItem();
-        _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), true));
-        registrierePager();
-        _fragenPager.setCurrentItem(position);
-
-        erzeugeTestErgebnisWerkzeug();
     }
 
     @Override
@@ -139,19 +177,6 @@ public class FragenWerkzeug extends ActionBarActivity
         AlertDialog dialog = builder.create();
 
         dialog.show();
-    }
-
-    /**
-     * Startet die Anzeige für das Ergebnis des Tests.
-     */
-    private void erzeugeTestErgebnisWerkzeug()
-    {
-        Intent intent = new Intent(this, TestErgebnisWerkzeug.class);
-
-        intent.putExtra(ARG_ENDERGEBNIS, _fragenService.berechneGesamtpunktzahl());
-        intent.putExtra(ARG_MAXERGEBNIS, _fragenService.getMaxPunktzahl());
-
-        startActivity(intent);
     }
 
     private void returnToStart()

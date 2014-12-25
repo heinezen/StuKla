@@ -23,6 +23,9 @@ import heinezen.stukla.werkzeuge.einleser.FragenEinleser;
 
 public class TestAuswahlWerkzeug extends ActionBarActivity
 {
+    private static final String ARG_ZEIT = "Zeit";
+    private static final String ARG_FRAGEN = "Fragen";
+
     private File TEST_DATEIEN_ORDNER;
 
     private Spinner _testAuswahl;
@@ -63,29 +66,12 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         registriereKomponenten();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
+    private void erzeugeAuswahlBereich()
     {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_test_auswahl, menu);
-        return true;
-    }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_dropdown_item, _testDateien);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if(id == R.id.action_settings)
-        {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        _testAuswahl.setAdapter(adapter);
     }
 
     private void registriereKomponenten()
@@ -141,14 +127,6 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         }
     }
 
-    private void erzeugeAuswahlBereich()
-    {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_dropdown_item, _testDateien);
-
-        _testAuswahl.setAdapter(adapter);
-    }
-
     private void erzeugeFragenWerkzeug(int testFragen)
     {
         FragenEinleser fragenEinleser = new FragenEinleser(_testDateien[testFragen]);
@@ -157,7 +135,10 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
 
         try
         {
-            intent.putExtra("Fragen", fragenEinleser.gibFragenAus());
+            intent.putExtra(ARG_FRAGEN, fragenEinleser.gibFragenAus());
+
+            String[] uebersicht = fragenEinleser.gibUeberblickAus();
+            intent.putExtra(ARG_ZEIT, Integer.parseInt(uebersicht[3]));
 
             startActivity(intent);
         }
@@ -165,5 +146,30 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_test_auswahl, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if(id == R.id.action_settings)
+        {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
