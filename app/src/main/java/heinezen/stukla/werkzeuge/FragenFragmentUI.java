@@ -40,19 +40,6 @@ class FragenFragmentUI
     }
 
     /**
-     * Erzeugt einen Bildbereich mit einem JLabel.
-     */
-    private void erzeugeBildBereich()
-    {
-        _bildBereich = new LinearLayout(_anzeige.getContext());
-        _anzeige.addView(_bildBereich, 1);
-
-        _bildLabel = new ImageView(_anzeige.getContext());
-
-        _bildBereich.addView(_bildLabel);
-    }
-
-    /**
      * Erzeugt einen Fragebereich mit einem JLabel
      */
     private void erzeugeFrageBereich()
@@ -63,6 +50,19 @@ class FragenFragmentUI
         _fragetextLabel = new TextView(_anzeige.getContext());
 
         _frageBereich.addView(_fragetextLabel);
+    }
+
+    /**
+     * Erzeugt einen Bildbereich mit einem JLabel.
+     */
+    private void erzeugeBildBereich()
+    {
+        _bildBereich = new LinearLayout(_anzeige.getContext());
+        _anzeige.addView(_bildBereich, 1);
+
+        _bildLabel = new ImageView(_anzeige.getContext());
+
+        _bildBereich.addView(_bildLabel);
     }
 
     /**
@@ -88,6 +88,8 @@ class FragenFragmentUI
     public void aktualisiereFrage(String neuerFragetext)
     {
         _fragetextLabel.setText(neuerFragetext);
+        _fragetextLabel.setTextSize(16f);
+        _fragetextLabel.setTextColor(Color.BLACK);
     }
 
     /**

@@ -1,7 +1,6 @@
 package heinezen.stukla.werkzeuge;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -25,8 +24,9 @@ import heinezen.stukla.services.FragenServiceImpl;
  */
 public class FragenWerkzeug extends ActionBarActivity
 {
+    private static final String ARG_ENDERGEBNIS = "Endergebnis";
+    private static final String ARG_MAXERGEBNIS = "MaxErgebnis";
     private final String ARG_FRAGEN = "Fragen";
-
     /**
      * Der FragenService.
      */
@@ -83,11 +83,8 @@ public class FragenWerkzeug extends ActionBarActivity
         switch(item.getItemId())
         {
             case R.id.action_beenden:
-                testAbgeben();
                 item.setEnabled(false);
-                return true;
-            case R.id.action_abbrechen:
-                onBackPressed();
+                testAbgeben();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -104,41 +101,21 @@ public class FragenWerkzeug extends ActionBarActivity
         _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), true));
         registrierePager();
         _fragenPager.setCurrentItem(position);
+
+        erzeugeTestErgebnisWerkzeug();
     }
 
-    @Override
-    public void onBackPressed()
+    /**
+     * Startet die Anzeige für das Ergebnis des Tests.
+     */
+    private void erzeugeTestErgebnisWerkzeug()
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        Intent intent = new Intent(this, TestErgebnisWerkzeug.class);
 
-        builder.setMessage("Test abbrechen und zur Auswahl zurückkehren?");
-        builder.setTitle("Abbrechen");
+        intent.putExtra(ARG_ENDERGEBNIS, _fragenService.berechneGesamtpunktzahl());
+        intent.putExtra(ARG_MAXERGEBNIS, _fragenService.getMaxPunktzahl());
 
-        builder.setPositiveButton("Ja", new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                returnToStart();
-            }
-        });
-        builder.setNegativeButton("Nein", new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-
-            }
-        });
-
-        AlertDialog dialog = builder.create();
-
-        dialog.show();
-    }
-
-    private void returnToStart()
-    {
-        super.onBackPressed();
+        startActivity(intent);
     }
 
     /**
