@@ -86,6 +86,9 @@ public class FragenWerkzeug extends ActionBarActivity
                 testAbgeben();
                 item.setEnabled(false);
                 return true;
+            case R.id.action_abbrechen:
+                onBackPressed();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
