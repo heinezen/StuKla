@@ -127,7 +127,7 @@ public class FragenWerkzeug extends ActionBarActivity
             @Override
             public void onClick(DialogInterface dialog, int which)
             {
-                int i = 0;
+                
             }
         });
 
