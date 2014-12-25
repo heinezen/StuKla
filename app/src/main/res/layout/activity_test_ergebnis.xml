@@ -2,15 +2,69 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context="heinezen.stukla.werkzeuge.TestErgebnisWerkzeug">
 
-    <TextView
-        android:text="@string/hello_world"
+    <GridLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="80dp"
+        android:clickable="false"
+        android:columnCount="2"
+        android:columnOrderPreserved="true"
+        android:rowCount="3"
+        android:rowOrderPreserved="false"
+        android:useDefaultMargins="true">
 
+        <TextView
+            android:id="@+id/_ergebnisLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ergebnis:"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <TextView
+            android:id="@+id/_ergebisAnzeigeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <TextView
+            android:id="@+id/_bestandenLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bestanden:"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <TextView
+            android:id="@+id/_bestandenAngabeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <TextView
+            android:id="@+id/_zeitLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Benötigte Zeit:"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <TextView
+            android:id="@+id/_zeitAngabeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+    </GridLayout>
 </RelativeLayout>

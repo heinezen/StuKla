@@ -1,5 +1,6 @@
 package heinezen.stukla.werkzeuge;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -23,8 +24,9 @@ import heinezen.stukla.services.FragenServiceImpl;
  */
 public class FragenWerkzeug extends ActionBarActivity
 {
+    private static final String ARG_ENDERGEBNIS = "Endergebnis";
+    private static final String ARG_MAXERGEBNIS = "MaxErgebnis";
     private final String ARG_FRAGEN = "Fragen";
-
     /**
      * Der FragenService.
      */
@@ -53,27 +55,6 @@ public class FragenWerkzeug extends ActionBarActivity
         registrierePager();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu_fragen_beantworter, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch(item.getItemId())
-        {
-            case R.id.action_beenden:
-                testAbgeben();
-                item.setEnabled(false);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
     /**
      * Registriert die Listener des Pagers.
      */
@@ -89,6 +70,27 @@ public class FragenWerkzeug extends ActionBarActivity
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu_fragen_beantworter, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.action_beenden:
+                item.setEnabled(false);
+                testAbgeben();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     /**
      * Gibt den Test ab und nennt die Gesamtpunktzahl. Au�erdem werden alle AntwortElemente
      * gesperrt.
@@ -99,6 +101,21 @@ public class FragenWerkzeug extends ActionBarActivity
         _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), true));
         registrierePager();
         _fragenPager.setCurrentItem(position);
+
+        erzeugeTestErgebnisWerkzeug();
+    }
+
+    /**
+     * Startet die Anzeige für das Ergebnis des Tests.
+     */
+    private void erzeugeTestErgebnisWerkzeug()
+    {
+        Intent intent = new Intent(this, TestErgebnisWerkzeug.class);
+
+        intent.putExtra(ARG_ENDERGEBNIS, _fragenService.berechneGesamtpunktzahl());
+        intent.putExtra(ARG_MAXERGEBNIS, _fragenService.getMaxPunktzahl());
+
+        startActivity(intent);
     }
 
     /**
