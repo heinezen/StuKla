@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import heinezen.stukla.R;
@@ -68,8 +69,17 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
 
     private void erzeugeAuswahlBereich()
     {
+        List<String> testDateienNamen = new ArrayList<>();
+
+        for(String pfad : _testDateien)
+        {
+            File datei = new File(pfad);
+            String dateiname = datei.getName().replace(".txt", "");
+            testDateienNamen.add(dateiname);
+        }
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_dropdown_item, _testDateien);
+                android.R.layout.simple_spinner_dropdown_item, testDateienNamen);
 
         _testAuswahl.setAdapter(adapter);
     }
