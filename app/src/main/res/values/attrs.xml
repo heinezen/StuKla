@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CountDownTimerView">
+        <attr name="counterColor" format="color"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="labelColor" format="color"/>
+        <attr name="counterLabel" format="string"></attr>
+    </declare-styleable>
+</resources>
