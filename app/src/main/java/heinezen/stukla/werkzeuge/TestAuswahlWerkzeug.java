@@ -1,7 +1,10 @@
 package heinezen.stukla.werkzeuge;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.View;
@@ -13,6 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +31,7 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
 {
     private static final String ARG_ZEIT = "Zeit";
     private static final String ARG_FRAGEN = "Fragen";
+    private static final String ERSTER_START = "ERSTER_START";
 
     private File TEST_DATEIEN_ORDNER;
 
@@ -42,6 +49,93 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_auswahl);
 
+        kopiereTestsAusAssets();
+
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean ersterStart = pref.getBoolean(ERSTER_START, true);
+        if(ersterStart)
+        {
+
+
+//            SharedPreferences.Editor editor = pref.edit();
+//            editor.putBoolean(ERSTER_START, false);
+//            editor.commit();
+        }
+
+        sucheTestDateien();
+
+        registriereKomponenten();
+    }
+
+    private void kopiereTestsAusAssets()
+    {
+        AssetManager manager = getResources().getAssets();
+        File speicher = getApplicationContext().getExternalFilesDir(null);
+        File testsOrdner = new File(speicher, "tests");
+        testsOrdner.mkdir();
+        String[] unterordner = null;
+        List<String> dateien = new ArrayList<>();
+
+        try
+        {
+            unterordner = manager.list("tests");
+            for(String datei : unterordner)
+            {
+                File testOrdner = new File(testsOrdner, datei);
+                testOrdner.mkdir();
+
+                String[] ordner = manager.list("tests/" + datei);
+                for(String dat : ordner)
+                {
+                    dateien.add(dat);
+                }
+            }
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        for(String datei : unterordner)
+        {
+            try
+            {
+                InputStream inputstream = manager.open("tests/TEST-25012015/TEST-25012015.txt");
+
+                FileOutputStream outputstream = null;
+                try
+                {
+                    File root = getApplicationContext().getExternalFilesDir(null);
+                    File file = new File(root, "myFile.txt");
+                    outputstream = new FileOutputStream(file);
+                    byte[] buffer = new byte[1024];
+                    int length;
+                    while((length = inputstream.read(buffer)) > 0)
+                    {
+                        outputstream.write(buffer, 0, length);
+                    }
+                }
+                finally
+                {
+                    if(inputstream != null)
+                    {
+                        inputstream.close();
+                    }
+                    if(outputstream != null)
+                    {
+                        outputstream.close();
+                    }
+                }
+            }
+            catch(IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sucheTestDateien()
+    {
         TEST_DATEIEN_ORDNER = getApplicationContext().getExternalFilesDir(null);
 
         _dateienEinleser = new DateienEinleser(TEST_DATEIEN_ORDNER);
@@ -62,25 +156,6 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         _testDateien = array;
 
         erzeugeAuswahlBereich();
-
-        registriereKomponenten();
-    }
-
-    private void erzeugeAuswahlBereich()
-    {
-        List<String> testDateienNamen = new ArrayList<>();
-
-        for(String pfad : _testDateien)
-        {
-            File datei = new File(pfad);
-            String dateiname = datei.getName().replace(".txt", "");
-            testDateienNamen.add(dateiname);
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_dropdown_item, testDateienNamen);
-
-        _testAuswahl.setAdapter(adapter);
     }
 
     private void registriereKomponenten()
@@ -109,6 +184,23 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
                 erzeugeFragenWerkzeug(_aktuellePosition);
             }
         });
+    }
+
+    private void erzeugeAuswahlBereich()
+    {
+        List<String> testDateienNamen = new ArrayList<>();
+
+        for(String pfad : _testDateien)
+        {
+            File datei = new File(pfad);
+            String dateiname = datei.getName().replace(".txt", "");
+            testDateienNamen.add(dateiname);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_dropdown_item, testDateienNamen);
+
+        _testAuswahl.setAdapter(adapter);
     }
 
     private void aktualisiereUebersicht(int dateiIndex)
