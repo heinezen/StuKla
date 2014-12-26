@@ -90,7 +90,7 @@ public class DateienEinleser
 
             br.close();
 
-            if(ausdruck.equals(KENNZEICHNUNG))
+            if(ausdruck.contains(KENNZEICHNUNG))
             {
                 return true;
             }

@@ -1,4 +1,4 @@
-###STUKLA###
+﻿###STUKLA###
 ###UEB###1.01
 ###UEB###TEST
 ###UEB###25.01.2015
@@ -24,7 +24,7 @@
 
 ###FRA###
 ###FRG###Text
-###FRG###Welches ber�hmte Programm sieht man hier?
+###FRG###Welches berühmte Programm sieht man hier?
 ###FRG###5
 ###FRG###0
 ###FRG###false
