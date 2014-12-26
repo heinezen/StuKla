@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:custom="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -8,20 +9,21 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context=".werkzeuge.FragenWerkzeugUI">
 
+    <heinezen.stukla.materialien.views.CountDownTimerView
+        android:id="@+id/_countdown"
+        android:layout_width="wrap_content"
+        android:layout_height="10pt"
+        custom:backgroundColor="#ffff0000"
+        custom:counterColor="#ff0099ff"
+        custom:counterLabel=""
+        custom:labelColor="#ff000000"/>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/_pager"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:layout_below="@+id/_countdown">
     </android.support.v4.view.ViewPager>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:baselineAligned="false"
-        android:id="@+id/_punkteAnzeige">
-    </LinearLayout>
 
 </RelativeLayout>

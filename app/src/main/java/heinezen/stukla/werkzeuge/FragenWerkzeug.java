@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import heinezen.stukla.R;
 import heinezen.stukla.materialien.Frage;
+import heinezen.stukla.materialien.views.CountDownTimerView;
 import heinezen.stukla.services.FragenService;
 import heinezen.stukla.services.FragenServiceImpl;
 
@@ -67,12 +68,18 @@ public class FragenWerkzeug extends ActionBarActivity
         int minuten = getIntent().getIntExtra(ARG_ZEIT, 60);
         int millisekunden = minuten * 60 * 1000;
 
+        final CountDownTimerView countdown = (CountDownTimerView) findViewById(R.id._countdown);
+
+        countdown.setMaxZeit(millisekunden);
+
         new CountDownTimer(millisekunden, 1000)
         {
             @Override
             public void onTick(long millisUntilFinished)
             {
+                countdown.setFortschritt(millisUntilFinished);
 
+                countdown.invalidate();
             }
 
             @Override
