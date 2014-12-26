@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.CountDownTimer;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -20,6 +21,7 @@ public class CountDownTimerView extends View
     private int _labelColor;
 
     private String _counterText;
+    private String _time;
 
     private Paint _countdownPaint;
 
@@ -65,10 +67,10 @@ public class CountDownTimerView extends View
         canvas.drawRect(0, 0, viewBreite - _fortschritt, viewHoehe, _countdownPaint);
 
         _countdownPaint.setColor(_labelColor);
-        _countdownPaint.setTextAlign(Paint.Align.LEFT);
-        _countdownPaint.setTextSize(12);
+        _countdownPaint.setTextAlign(Paint.Align.CENTER);
+        _countdownPaint.setTextSize(36);
 
-        canvas.drawText(_counterText, 0, 0, _countdownPaint);
+        canvas.drawText(_counterText + _time, (viewBreite / 2), viewHoehe - 7, _countdownPaint);
     }
 
     public void setFortschritt(long millisUntilFinish)
@@ -89,8 +91,45 @@ public class CountDownTimerView extends View
         }
     }
 
+    public void setText(String text)
+    {
+        _counterText = text;
+    }
+
     public void setMaxZeit(long millisInFuture)
     {
         _maxZeit = millisInFuture;
+
+        _time = "" + _maxZeit / 1000 / 60 + ":00";
+
+        new CountDownTimer(_maxZeit, 1000)
+        {
+            @Override
+            public void onTick(long millisUntilFinished)
+            {
+                int seconds = (int) (millisUntilFinished / 1000);
+                int minutes = seconds / 60;
+                String minutesString = "" + minutes;
+                if(minutes < 10)
+                {
+                    minutesString = "0" + minutes;
+                }
+
+                int secondsInMinute = seconds - (minutes * 60);
+                String secondsInMinuteString = "" + secondsInMinute;
+                if(secondsInMinute < 10)
+                {
+                    secondsInMinuteString = "0" + secondsInMinute;
+                }
+
+                _time = minutesString + ":" + secondsInMinuteString;
+            }
+
+            @Override
+            public void onFinish()
+            {
+
+            }
+        }.start();
     }
 }
