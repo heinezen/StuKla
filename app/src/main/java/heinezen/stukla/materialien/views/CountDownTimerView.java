@@ -51,8 +51,9 @@ public class CountDownTimerView extends View
         int viewBreite = this.getMeasuredWidth();
         int viewHoehe = this.getMeasuredHeight();
 
-        _countdownPaint.setStyle(Paint.Style.FILL);
+        _countdownPaint.setStyle(Paint.Style.STROKE);
         _countdownPaint.setAntiAlias(true);
+        _countdownPaint.setStrokeWidth(4);
         _countdownPaint.setColor(_backgroundColor);
 
         canvas.drawRect(0, 0, viewBreite, viewHoehe, _countdownPaint);

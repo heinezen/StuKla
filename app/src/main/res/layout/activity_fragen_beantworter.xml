@@ -13,7 +13,7 @@
         android:id="@+id/_countdown"
         android:layout_width="wrap_content"
         android:layout_height="10pt"
-        custom:backgroundColor="#ffff0000"
+        custom:backgroundColor="#ff0099ff"
         custom:counterColor="#ff0099ff"
         custom:counterLabel=""
         custom:labelColor="#ff000000"/>
