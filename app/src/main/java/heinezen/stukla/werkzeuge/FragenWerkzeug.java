@@ -39,9 +39,14 @@ public class FragenWerkzeug extends ActionBarActivity
     private FragenService _fragenService;
 
     /**
-     * Der Pager mit UI zum Wehseln der Fragen.
+     * Der Pager mit UI zum Wechseln der Fragen.
      */
     private ViewPager _fragenPager;
+
+    /**
+     * Der Timer des Werkzeugs;
+     */
+    private CountDownTimer _countdown;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -68,18 +73,18 @@ public class FragenWerkzeug extends ActionBarActivity
         int minuten = getIntent().getIntExtra(ARG_ZEIT, 60);
         int millisekunden = minuten * 60 * 1000;
 
-        final CountDownTimerView countdown = (CountDownTimerView) findViewById(R.id._countdown);
+        final CountDownTimerView countdownView = (CountDownTimerView) findViewById(R.id._countdown);
 
-        countdown.setMaxZeit(millisekunden);
+        countdownView.setMaxZeit(millisekunden);
 
-        new CountDownTimer(millisekunden, 1000)
+        _countdown = new CountDownTimer(millisekunden, 1000)
         {
             @Override
             public void onTick(long millisUntilFinished)
             {
-                countdown.setFortschritt(millisUntilFinished);
+                countdownView.setFortschritt(millisUntilFinished);
 
-                countdown.invalidate();
+                countdownView.invalidate();
             }
 
             @Override
