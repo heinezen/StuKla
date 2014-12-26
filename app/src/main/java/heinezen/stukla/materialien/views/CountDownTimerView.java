@@ -100,8 +100,6 @@ public class CountDownTimerView extends View
     {
         _maxZeit = millisInFuture;
 
-        _time = "" + _maxZeit / 1000 / 60 + ":00";
-
         new CountDownTimer(_maxZeit, 1000)
         {
             @Override
