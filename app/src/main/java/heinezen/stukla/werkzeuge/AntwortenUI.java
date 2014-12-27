@@ -109,7 +109,7 @@ class AntwortenUI
                         neuerRadioButton.setEnabled(false);
 
                         boolean[] werte = (boolean[]) antwortenWerte;
-                        if(werte[i])
+                        if(werte[i] && neueAntwortWerte[i])
                         {
                             neuerRadioButton.setBackgroundColor(Color.GREEN);
                         }
