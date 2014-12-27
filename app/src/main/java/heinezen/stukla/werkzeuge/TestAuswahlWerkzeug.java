@@ -55,11 +55,9 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         boolean ersterStart = pref.getBoolean(ERSTER_START, true);
         if(ersterStart)
         {
-
-
-//            SharedPreferences.Editor editor = pref.edit();
-//            editor.putBoolean(ERSTER_START, false);
-//            editor.commit();
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putBoolean(ERSTER_START, false);
+            editor.commit();
         }
 
         sucheTestDateien();
@@ -73,7 +71,7 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         File speicher = getApplicationContext().getExternalFilesDir(null);
         File testsOrdner = new File(speicher, "tests");
         testsOrdner.mkdir();
-        String[] unterordner = null;
+        String[] unterordner;
         List<String> dateien = new ArrayList<>();
 
         try
