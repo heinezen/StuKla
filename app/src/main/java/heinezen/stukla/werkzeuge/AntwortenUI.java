@@ -69,9 +69,13 @@ class AntwortenUI
                         neueCheckBox.setEnabled(false);
 
                         boolean[] werte = (boolean[]) antwortenWerte;
-                        if(werte[i])
+                        if(werte[i] && neueAntwortWerte[i])
                         {
                             neueCheckBox.setBackgroundColor(Color.GREEN);
+                        }
+                        else if(werte[i])
+                        {
+                            neueCheckBox.setBackgroundColor(Color.CYAN);
                         }
                         else if(!werte[i] && neueAntwortWerte[i])
                         {
@@ -109,6 +113,10 @@ class AntwortenUI
                         {
                             neuerRadioButton.setBackgroundColor(Color.GREEN);
                         }
+                        else if(werte[i])
+                        {
+                            neuerRadioButton.setBackgroundColor(Color.CYAN);
+                        }
                         else if(!werte[i] && neueAntwortWerte[i])
                         {
                             neuerRadioButton.setBackgroundColor(Color.RED);
@@ -141,7 +149,7 @@ class AntwortenUI
                         {
                             TextView antwortTextView = new TextView(_antwortenBereich.getContext());
                             antwortTextView.setText(antwort);
-                            antwortTextView.setTextColor(Color.GREEN);
+                            antwortTextView.setTextColor(Color.CYAN);
 
                             _antwortenBereich.addView(antwortTextView);
                         }
