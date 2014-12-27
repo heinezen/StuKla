@@ -39,7 +39,8 @@
             android:id="@+id/_ergebisAnzeigeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="#ff000000"/>
 
         <TextView
             android:id="@+id/_bestandenLabel"

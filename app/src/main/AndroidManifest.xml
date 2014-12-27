@@ -3,7 +3,7 @@
     package="heinezen.stukla"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE">
     </uses-permission>
 
     <application
@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".werkzeuge.FragenWerkzeug"
-            android:label="@string/title_activity_test_auswahl">
+            android:label="Fragen">
         </activity>
         <activity
             android:name=".werkzeuge.TestAuswahlWerkzeug"

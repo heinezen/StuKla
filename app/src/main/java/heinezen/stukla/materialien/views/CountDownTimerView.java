@@ -77,6 +77,10 @@ public class CountDownTimerView extends View
     public void setFortschritt(long millisUntilFinish)
     {
         int intervalle = this.getMeasuredWidth();
+        if(intervalle == 0)
+        {
+            intervalle = 1;
+        }
         long countDownIntervall = _maxZeit / intervalle;
 
         long offset = (_maxZeit - (countDownIntervall * _fortschritt)) - millisUntilFinish;

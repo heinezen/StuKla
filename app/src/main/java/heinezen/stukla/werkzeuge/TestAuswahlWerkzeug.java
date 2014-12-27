@@ -68,7 +68,7 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
     private void kopiereTestsAusAssets()
     {
         AssetManager manager = getResources().getAssets();
-        File speicher = getApplicationContext().getExternalFilesDir(null);
+        File speicher = this.getExternalFilesDir(null);
         File testsOrdner = new File(speicher, "tests");
         testsOrdner.mkdir();
         String[] unterordner;

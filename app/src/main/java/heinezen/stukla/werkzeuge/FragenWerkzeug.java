@@ -45,7 +45,7 @@ public class FragenWerkzeug extends ActionBarActivity
     private ViewPager _fragenPager;
 
     /**
-     *
+     * Die Anzeige für den Countdown.
      */
     private CountDownTimerView _countdownView;
 
@@ -63,6 +63,8 @@ public class FragenWerkzeug extends ActionBarActivity
      * Die Zeit für den Test in Millisekunden.
      */
     private long _testZeit;
+
+    private boolean _testBeendet;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -141,8 +143,10 @@ public class FragenWerkzeug extends ActionBarActivity
      */
     private void testAbgeben()
     {
+        _testBeendet = true;
+
         int position = _fragenPager.getCurrentItem();
-        _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), true));
+        _fragenPager.setAdapter(new FragenPagerAdapter(getSupportFragmentManager(), _testBeendet));
         registrierePager();
         _fragenPager.setCurrentItem(position);
 
@@ -150,8 +154,6 @@ public class FragenWerkzeug extends ActionBarActivity
         _countdownView.stopCountdown();
 
         erzeugeTestErgebnisWerkzeug();
-
-        _vergangeneZeit = _testZeit;
     }
 
     /**
@@ -232,7 +234,7 @@ public class FragenWerkzeug extends ActionBarActivity
     {
         super.onPause();
 
-        if(_vergangeneZeit != _testZeit)
+        if(!_testBeendet)
         {
             _countdown.cancel();
             _countdownView.stopCountdown();
@@ -244,7 +246,7 @@ public class FragenWerkzeug extends ActionBarActivity
     {
         super.onResume();
 
-        if(_vergangeneZeit != _testZeit && _vergangeneZeit != 0)
+        if(!_testBeendet && _vergangeneZeit != 0)
         {
             long restzeit = _testZeit - _vergangeneZeit;
             setCountdown(restzeit);
