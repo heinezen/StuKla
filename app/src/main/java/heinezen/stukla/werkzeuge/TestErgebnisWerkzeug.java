@@ -12,8 +12,11 @@ public class TestErgebnisWerkzeug extends ActionBarActivity
 {
     private static final String ARG_ENDERGEBNIS = "Endergebnis";
     private static final String ARG_MAXERGEBNIS = "MaxErgebnis";
+    private static final String ARG_VERGANGENE_ZEIT = "Vergangene Zeit";
+
     private int _ergebnis;
     private int _maxErgebnis;
+    private String _vergangeneZeit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -24,6 +27,8 @@ public class TestErgebnisWerkzeug extends ActionBarActivity
         _ergebnis = getIntent().getIntExtra(ARG_ENDERGEBNIS, 0);
         _maxErgebnis = getIntent().getIntExtra(ARG_MAXERGEBNIS, 0);
         int prozent = (int) (100 * ((double) _ergebnis / (double) _maxErgebnis));
+        long zeit = getIntent().getLongExtra(ARG_VERGANGENE_ZEIT, 0);
+        _vergangeneZeit = verarbeiteZeit(zeit);
 
         TextView view = (TextView) findViewById(R.id._ergebisAnzeigeLabel);
         view.setText(String.format("%d/%d Punkte (%d%%)", _ergebnis, _maxErgebnis, prozent));
@@ -41,7 +46,38 @@ public class TestErgebnisWerkzeug extends ActionBarActivity
         }
 
         view = (TextView) findViewById(R.id._zeitAngabeLabel);
-        view.setText("Keine Angabe");
+        view.setText(_vergangeneZeit);
+    }
+
+    /**
+     * Verarbeitet eine Zeitangabe in einen formattierten String der Form HH:MM
+     *
+     * @param zeitInMillisekunden Die Zeit in Millisekunden
+     *
+     * @return Zeitangabe in HH:MM
+     */
+    private String verarbeiteZeit(long zeitInMillisekunden)
+    {
+        String zeit;
+
+        int seconds = (int) (zeitInMillisekunden / 1000);
+        int minutes = seconds / 60;
+        String minutesString = "" + minutes;
+        if(minutes < 10)
+        {
+            minutesString = "0" + minutes;
+        }
+
+        int secondsInMinute = seconds - (minutes * 60);
+        String secondsInMinuteString = "" + secondsInMinute;
+        if(secondsInMinute < 10)
+        {
+            secondsInMinuteString = "0" + secondsInMinute;
+        }
+
+        zeit = minutesString + ":" + secondsInMinuteString;
+
+        return zeit;
     }
 
     @Override

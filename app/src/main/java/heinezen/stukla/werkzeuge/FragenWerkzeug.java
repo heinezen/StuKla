@@ -32,7 +32,8 @@ public class FragenWerkzeug extends ActionBarActivity
     private static final String ARG_MAXERGEBNIS = "MaxErgebnis";
     private static final String ARG_FRAGEN = "Fragen";
     private static final String ARG_ZEIT = "Zeit";
-    
+    private static final String ARG_VERGANGENE_ZEIT = "Vergangene Zeit";
+
     /**
      * Der FragenService.
      */
@@ -47,6 +48,16 @@ public class FragenWerkzeug extends ActionBarActivity
      * Der Timer des Werkzeugs;
      */
     private CountDownTimer _countdown;
+
+    /**
+     * Vergangene Zeit seit dem Start in Millisekunden.
+     */
+    private long _vergangeneZeit;
+
+    /**
+     * Die Zeit für den Test in Millisekunden.
+     */
+    private long _testZeit;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -71,19 +82,21 @@ public class FragenWerkzeug extends ActionBarActivity
     private void erzeugeCountdown()
     {
         int minuten = getIntent().getIntExtra(ARG_ZEIT, 60);
-        int millisekunden = minuten * 60 * 1000;
+        _testZeit = minuten * 60 * 1000;
+        _vergangeneZeit = 0;
 
         final CountDownTimerView countdownView = (CountDownTimerView) findViewById(R.id._countdown);
 
-        countdownView.setMaxZeit(millisekunden);
+        countdownView.setMaxZeit(_testZeit);
 
-        _countdown = new CountDownTimer(millisekunden, 1000)
+        _countdown = new CountDownTimer(_testZeit, 1000)
         {
             @Override
             public void onTick(long millisUntilFinished)
             {
-                countdownView.setFortschritt(millisUntilFinished);
+                _vergangeneZeit = _testZeit - millisUntilFinished;
 
+                countdownView.setFortschritt(millisUntilFinished);
                 countdownView.invalidate();
             }
 
@@ -121,6 +134,8 @@ public class FragenWerkzeug extends ActionBarActivity
         registrierePager();
         _fragenPager.setCurrentItem(position);
 
+        _countdown.cancel();
+
         erzeugeTestErgebnisWerkzeug();
     }
 
@@ -133,6 +148,7 @@ public class FragenWerkzeug extends ActionBarActivity
 
         intent.putExtra(ARG_ENDERGEBNIS, _fragenService.berechneGesamtpunktzahl());
         intent.putExtra(ARG_MAXERGEBNIS, _fragenService.getMaxPunktzahl());
+        intent.putExtra(ARG_VERGANGENE_ZEIT, _vergangeneZeit);
 
         startActivity(intent);
     }

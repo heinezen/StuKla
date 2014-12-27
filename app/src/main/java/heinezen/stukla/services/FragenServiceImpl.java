@@ -44,11 +44,6 @@ public class FragenServiceImpl implements FragenService
         return tempFragensatz;
     }
 
-    /**
-     * Berechnet die Gesamtpunktzahl des Beantworters für alle Fragen.
-     *
-     * @return Endpunktzahl des Tests.
-     */
     public int berechneGesamtpunktzahl()
     {
         int gesamtpunktzahl = 0;
