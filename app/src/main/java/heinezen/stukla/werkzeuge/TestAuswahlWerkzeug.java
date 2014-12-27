@@ -1,10 +1,8 @@
 package heinezen.stukla.werkzeuge;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.View;
@@ -49,15 +47,12 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_auswahl);
 
-        kopiereTestsAusAssets();
+        File speicher = this.getExternalFilesDir(null);
+        File testsOrdner = new File(speicher, "tests");
 
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean ersterStart = pref.getBoolean(ERSTER_START, true);
-        if(ersterStart)
+        if(!testsOrdner.exists())
         {
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putBoolean(ERSTER_START, false);
-            editor.commit();
+            kopiereTestsAusAssets();
         }
 
         sucheTestDateien();
