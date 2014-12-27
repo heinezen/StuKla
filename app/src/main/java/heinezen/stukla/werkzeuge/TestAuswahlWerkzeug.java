@@ -84,53 +84,43 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
                 File testOrdner = new File(testsOrdner, datei);
                 testOrdner.mkdir();
 
-                String[] ordner = manager.list("tests/" + datei);
+                String[] ordner = manager.list("tests" + File.separator + datei);
                 for(String dat : ordner)
                 {
                     dateien.add(dat);
+
+                    InputStream inputstream = manager.open("tests" + File.separator + datei + File
+                            .separator + dat);
+
+                    FileOutputStream outputstream = null;
+                    try
+                    {
+                        File file = new File(testOrdner, dat);
+                        outputstream = new FileOutputStream(file);
+                        byte[] buffer = new byte[1024];
+                        int length;
+                        while((length = inputstream.read(buffer)) > 0)
+                        {
+                            outputstream.write(buffer, 0, length);
+                        }
+                    }
+                    finally
+                    {
+                        if(inputstream != null)
+                        {
+                            inputstream.close();
+                        }
+                        if(outputstream != null)
+                        {
+                            outputstream.close();
+                        }
+                    }
                 }
             }
         }
         catch(IOException e)
         {
             e.printStackTrace();
-        }
-
-        for(String datei : unterordner)
-        {
-            try
-            {
-                InputStream inputstream = manager.open("tests/TEST-25012015/TEST-25012015.txt");
-
-                FileOutputStream outputstream = null;
-                try
-                {
-                    File root = getApplicationContext().getExternalFilesDir(null);
-                    File file = new File(root, "myFile.txt");
-                    outputstream = new FileOutputStream(file);
-                    byte[] buffer = new byte[1024];
-                    int length;
-                    while((length = inputstream.read(buffer)) > 0)
-                    {
-                        outputstream.write(buffer, 0, length);
-                    }
-                }
-                finally
-                {
-                    if(inputstream != null)
-                    {
-                        inputstream.close();
-                    }
-                    if(outputstream != null)
-                    {
-                        outputstream.close();
-                    }
-                }
-            }
-            catch(IOException e)
-            {
-                e.printStackTrace();
-            }
         }
     }
 
