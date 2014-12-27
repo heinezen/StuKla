@@ -64,6 +64,9 @@ public class FragenWerkzeug extends ActionBarActivity
      */
     private long _testZeit;
 
+    /**
+     * Gibt an ob der Test beendet ist.
+     */
     private boolean _testBeendet;
 
     @Override

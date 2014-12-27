@@ -1,0 +1,239 @@
+###STUKLA###
+###UEB###1.03
+###UEB###WIPRRE
+###UEB###27.12.2014
+###UEB###90
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenken Sie die Auslegungsregeln für Willenserklärungen. Wonach wird eine Willenserklärung ausgelegt?
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###Danach, was ein subjektiver Dritter in der Person des Erklärungsempfängers bei vernünftiger Würdigung aller erkennbarer Umstände unter Berücksichtigung von Treu und Glauben und der Verkehrssitte verstanden hätte.###ANT###false
+###FRG###Danach, was ein objektiver Dritter in der Person des Erklärungsempfängers bei vernünftiger Würdigung aller erkennbarer Umstände unter Berücksichtigung von Treu und Glauben und der Verkehrssitte verstanden hätte.###ANT###true
+###FRG###Danach, was ein objektiver Dritter in der Person des Erklärenden bei vernünftiger Würdigung aller erkennbarer Umstände unter Berücksichtigung von Treu und Glauben und der Verkehrssitte verstanden hätte.###ANT###false
+###FRG###Danach, was ein objektiver Dritter in der Person des Erklärenden bei vernünftiger Würdigung aller erkennbarer Umstände unter Berücksichtigung vom Gesetz und Vertragsrecht verstanden hätte.###ANT###false
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenken Sie die Voraussetzungen des Zugangs einer Willenserklärung! Welche der genannten Voraussetzungen gehören zur Definition des Zugangs einer Willenserklärung?
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###Die Willenserklärung muss in den Machtbereich des Empfängers gelangt sein.###ANT###true
+###FRG###Die Willenserklärung muss vom Empfänger zur Kenntnis genommen worden sein.###ANT###false
+###FRG###Die Willenserklärung muss vom Empfänger gelesen worden sein.###ANT###false
+###FRG###Die Willenserklärung muss vom Empfänger gebilligt worden sein.###ANT###false
+###FRG###Der Empfänger muss (unter Annahme normaler Umständen) die Möglichkeit der Kenntnisnahme gehabt haben.###ANT###true
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenken Sie das Rechtsinstitut der AGB. Welche Aussage/n ist/sind zutreffend?
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###Als Verbraucher sollte man AGB stets genau durchlesen, da sie überraschende Klauseln enthalten können, die dann Vertragsbestandteil werden.###ANT###false
+###FRG###Als Verbraucher sollte man AGB stets genau durchlesen, da sie Klauseln enthalten können, die einem etwaigen individuellen Zusatz im Vertrag, den man z.B. mit dem Verkäufer vereinbart hat, vorgehen würden.###ANT###false
+###FRG###Der Vertragspartner muss mit der Geltung der AGB einverstanden sein.###ANT###true
+###FRG###Die AGB-Regeln des BGB dienen ausschließlich dem Schutz der Verbraucher, nicht dem von Unternehmen, denn Kaufleute müssen wissen was sie tun und handeln professionell.###ANT###false
+###FRG###Zweifel bei der Auslegung von AGB gehen zu Lasten des Verwenders.###ANT###true
+###FRG###Zweifel bei der Auslegung von AGB gehen zu Lasten des Vertragspartners des Verwenders.###ANT###false
+###FRG###Zweifel bei der Auslegung von AGB gehen hälftig zu Lasten des Verwenders und des Vertragspartners.###ANT###false
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenken Sie das Rechtsinstitut der Stellvertretung: Welche Aussage/n ist/sind zutreffend?
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###Das Institut der Stellvertretung kann für alle Rechtsgeschäfte genutzt werden.###ANT###false
+###FRG###Wenn der Stellvertreter nicht deutlich macht, dass er als Vertreter handelt, schließt er ein `Eigengeschäft´ ab, haftet also selbst für die Erfüllung des Vertrages oder auf Schadensersatz.###ANT###true
+###FRG###Wenn der Stellvertreter versehentlich ein `Eigengeschäft´ abgeschlossen hat, kann er seine Willenserklärung jedoch anfechten. Dann muss er ggf. nur den Vertrauensschaden bezahlen.###ANT###false
+###FRG###Der Vertreter muss immer offenkundig im Namen des Vertretenen handeln, also sagen, dass er als Vertreter handelt.###ANT###false
+###FRG###Der Vertreter kann auch so handeln, dass es sich zumindest aus den Umständen ergibt, dass er für den Vertretenen handelt.###ANT###true
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenken Sie die Nichtigkeitsgründe für Willenserklärungen. Welche Aussage/n zu Willenserklärungen / Rechtsgeschäften ist/sind richtig?
+###FRG###1
+###FRG###1
+###FRG###false
+###FRG###false
+###FRG###Der geheime Vorbehalt, das Gesagte nicht zu wollen, ist unerheblich.###ANT###true
+###FRG###Scheingeschäfte im beiderseitigen Einvernehmen sind nichtig.###ANT###true
+###FRG###Scherzerklärungen sind nichtig.###ANT###true
+###FRG###Willenserklärungen mit Irrtümern sind nichtig.###ANT###false
+###FRG###Willenserklärungen, die unter dem Druck einer Drohung abgegeben wurden, sind nichtig.###ANT###false
+
+###FRA###
+###FRG###Auswahl
+###FRG###Welche Prüfungspunkte gehören zu den Voraussetzungen für eine Aufrechnung?
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###Aufrechnungserklärung / Aufrechnungslage / Anfechtung der Aufrechnung###ANT###false
+###FRG###Aufrechnungserklärung / Aufrechnungslage / Kein Ausschluss der Aufrechnung###ANT###true
+###FRG###Aufrechnungserklärung / Aufrechnungslage / Gerichtliche Erlaubnis der Aufrechnung###ANT###false
+###FRG###Aufrechnungsunterschrift / Aufrechnungslage / Gerichtliche Erlaubnis der Aufrechnung###ANT###false
+###FRG###Aufrechnungserklärung / Aufrechnungslage / Notarielle Erlaubnis der Aufrechnung###ANT###false
+###FRG###Aufrechnungserklärung / Aufrechnungslage / Anwaltliche Erlaubnis der Aufrechnung###ANT###false
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenke Sie die Rechtslage in folgender Situation: A hat einen Gartenbaubetrieb und bietet auch das Fällen von Bäumen an. Mit seinem Kunden C schließt er einen Vertrag, an dessen Ende sich ein Hinweis befindet, dass ferner AGB Vertragsbestandteil sind, die im Geschäftslokal des Gartenbaubetriebes ausliegen und im Internet auf der Homepage des Betriebes zu finden sind (beides trifft auch zu). C liest sich alles durch und unterschreibt den Vertrag, der u.a. den Auftrag an die Firma von A beinhaltet, einen großen, morschen Baum im Garten des C zu fällen. Den Baum fällt ein Mitarbeiter des A, der jedoch leicht fahrlässig einen Riss im Baum übersieht, so dass der Baum anders als erwartet in die falsche Richtung fällt und ein Beet trifft, so dass mehrere teure Bonsai-Bäume des C zerstört werden. C fordert Schadensersatz. Aber der A verweist auf die AGB. Dort ist steht unter Klausel Nr. 5: „Schadensersatz für Schäden, die bei der Vertragsausübung entstehen, sind in jedem Fall ausgeschlossen.“ Und weiter unter Klausel 10: „Sollte eine Klausel aus dem Vertrag unwirksam sein, so gilt stattdessen die gesetzliche Regelung, die der Klausel am nächsten kommt.“ Wie ist die Rechtslage, welche Aussage/n ist/sind zutreffend?
+###FRG###3
+###FRG###3
+###FRG###false
+###FRG###false
+###FRG###Zwischen den beiden Parteien wurde ein wirksamer Vertrag geschlossen.###ANT###true
+###FRG###Leicht fahrlässige Schäden wurden gem. Klausel 5 der AGB ausgeschlossen, daher haftet die Firma des A nicht.###ANT###false
+###FRG###Die Klausel 5 der AGB ist unzulässig, aber es greift Klausel 10 der AGB. Somit gilt das BGB, wonach bestimmte Sachschäden bei leicht fahrlässiger Handlung ausgeschlossen werden können. Im Ergebnis haftet die Firma des A also nicht.###ANT###false
+###FRG###Die Klauseln sind unwirksam. Damit sind wesentliche Teile des Vertrages unwirksam (Haftungsfragen), so dass der ganze Vertrag als nicht geschlossen gilt. C kann Schadensersatz für die Sachbeschädigung nur nach § 823 BGB wegen unerlaubter Handlung verlangen.###ANT###false
+###FRG###Klausel 5 ist unwirksam, Klausel 10 entfaltet keine Wirkung. Der Rest des Vertrages bleibt wirksam. Die Firma A haftet somit für den leicht fahrlässig verursachten Schaden, den der Mitarbeiter zu verantworten hat.###ANT###true
+
+###FRA###
+###FRG###Auswahl
+###FRG###Durchdenken Sie das Rechtsinstitut der Stellvertretung: Welche Aussage/n zur Stellvertretung ist/sind zutreffend? "Die Voraussetzungen der Stellvertretung sind…
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###….eigene Willenserklärung des Vertreters / Handeln im eigenen Namen / Vertretungsmacht"###ANT###false
+###FRG###….eigene Willenserklärung des Vertreters / Handeln im Namen des Vertretenen / Vertretungsmacht"###ANT###true
+###FRG###….eigene Willenserklärung des Vertretenen / Handeln im Namen des Vertretenen / Vertretungsmacht"###ANT###false
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenken Sie die Rechtslage in folgender Situation: Welche Grundsätze gelten für die Kündigung von Dauerschuldverhältnissen (z.B. mit Internet-Dienstleister oder Telefongesellschaft)?
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###Die Kündigung von Dauerschuldverhältnissen ist in der Regel nur bei besonderen Gründe möglich.###ANT###false
+###FRG###In der Regel ist eine Kündigungsfrist zu wahren.###ANT###true
+###FRG###Die Kündigung von Dauerschuldverhältnissen ist auch während einer zulässigen Mindestlaufzeit am Anfang des Dauerschuldverhältnisses ohne besondere Gründe möglich.###ANT###false
+###FRG###Die Kündigung von zeitlich befristeten Dauerschuldverhältnissen ist ohne besondere Gründe möglich.###ANT###false
+
+###FRA###
+###FRG###Auswahl
+###FRG###Was sind die vollständigen Prüfungspunkte für die wirksame Abtretung einer Forderung?
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###Abtretungsvertrag / Befugnis zur Abtretung / Abtretbarkeit der Forderung###ANT###false
+###FRG###Befugnis zur Abtretung / Abtretbarkeit der Forderung / Abtretungsvertrag / Bestehende Forderung###ANT###true
+###FRG###Befugnis zur Abtretung / Abtretbarkeit der Forderung / Abtretungsvertrag / Bestehende Forderung / Genehmigung der Abtretung durch den betroffenen Schuldner###ANT###false
+###FRG###Abtretungsvertrag / Bestehende Forderung / Befugnis zur Abtretung###ANT###false
+###FRG###Abtretungsvertrag / Bestehende Forderung / Befugnis zur Abtretung / Genehmigung der Abtretung druch betroffenen Schuldner###ANT###false
+
+###FRA###
+###FRG###Auswahl
+###FRG###Was sind die grundsätzlichen Voraussetzungen für das Eingreifen von Gewährleistungsrechten beim Kaufvertrag?
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###Mangel bei Abschluss des Kaufvertrags / Nachfristsetzung / Kein Ausschluss###ANT###false
+###FRG###Mangel bei Kaufpreiszahlung / Nachfristsetzung / Kein Ausschluss###ANT###false
+###FRG###Mangel bei Gefahrenübergang / Nachfristsetzung / Kein Ausschluss###ANT###true
+###FRG###Mangel bei Angebot und Annahme / Nachfristsetzung / Kein Ausschluss###ANT###false
+###FRG###Mangel bei Gewährübergang / Nachfristsetzung / Kein Ausschluss###ANT###false
+###FRG###Mangel bei Abgabe von zwei Willenserklärung / Nachfristsetzung / Kein Ausschluss###ANT###false
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenken Sie die Rechtslage zu folgender Frage: Darf die Gewährleistungsfrist für Mängel bei Kaufsachen verkürzt werden? Welche Aussage/n ist/sind zutreffend?
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###Die Verkürzung der Gewährleistungsfristen ist in jedem Fall unzulässig.###ANT###false
+###FRG###Gewährleistungsfristen können durch AGB bei Geschäften von Kaufleuten untereinander verkürzt werden.###ANT###true
+###FRG###Gewährleistungsfristen in Verträgen von Kaufleuten mit Verbrauchern über neu hergestellte Sachen müssen mindestens 2 Jahre beinhalten.###ANT###true
+###FRG###Vereinbarte Gewährleistungsausschlüsse greifen auch bei arglistig verschwiegenen Mängeln.###ANT###false
+###FRG###Kaufleute können die Gewährleistungsfristen für ihre Produkte durch vertragliche Vereinbarung mit dem Kunden auch über die gesetzlich vorgeschriebene Frist verlängern.###ANT###true
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenken Sie die Rechtslage zu folgender Frage: Hausfrau H kauft bei der Firma F einen Staubsauger, der sofort bezahlt und übergeben wird. Nach 5 Monaten funktioniert das Gerät nicht mehr. Welche Aussage/n ist/sind zu treffend?
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###Hausfrau H hat Anspruch auf Neulieferung eines intakten Staubsaugers oder auf Nachbesserung des defekten Staubsaugers.###ANT###true
+###FRG###Hausfrau H hat das Wahlrecht, ob sie Nachbesserung oder Lieferung eines neuen Staubsaugers möchte.###ANT###true
+###FRG###Hausfrau H müsste im Streitfall beweisen, dass der Staubsauger, als sie ihn bekommen hatte, schon defekt war.###ANT###false
+###FRG###Firma F müsste im Streitfall beweisen, dass der Staubsauger, als H ihn bekommen hatte, noch mangelfrei war.###ANT###true
+###FRG###Firma F dürfte dreimal Nachbessern, bevor die H vom Vertrag zurücktreten könnte.###ANT###false
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenken Sie die Rechtslage zu folgender Frage: Was ist ein Mangel im Sinne des Kaufrechts? Welche Aussage/n ist/sind zutreffend?
+###FRG###1
+###FRG###1
+###FRG###false
+###FRG###false
+###FRG###Ein Mangel ist eine negative Abweichung der Ist-Beschaffenheit von der vereinbarten Soll-Beschaffenheit.###ANT###true
+###FRG###Ein Mangel ist eine negative Abweichung der Ist-Beschaffenheit von der üblichen bzw. zu erwartenden Soll-Beschaffenheit.###ANT###true
+###FRG###Ein Mangel ist stets eine negative Abweichung der Ist-Beschaffenheit von derjenigen Soll- Beschaffenheit, die sich der Käufer vorgestellt hat.###ANT###false
+###FRG###Ein Mangel ist eine besonders schlechte Montageanleitung bei nicht montierten Produkten.###ANT###true
+###FRG###Zulässige Erwartungen hinsichtlich der Soll-Beschaffenheit richten sich ggf. auch nach Werbeaussagen und Etikettierungen.###ANT###true
+
+###FRA###
+###FRG###Auswahl
+###FRG###Durchdenken Sie die Leistungsstörungen: Welche Aussage/n trifft/treffen zu? Die wichtigsten Oberbegriffe für die Leistungsstörungen sind:
+###FRG###2
+###FRG###2
+###FRG###false
+###FRG###false
+###FRG###Schlechtleistung / Unmöglichkeit / Faktische Unmöglichkeit###ANT###false
+###FRG###Unmöglichkeit / Verzögerung / Nichtleistung###ANT###false
+###FRG###Verzögerung / Schlechtleistung / Unmöglichkeit###ANT###true
+###FRG###Nichtleistung / Schlechtleistung / Unmöglichkeit###ANT###false
+###FRG###Nichtleistung / Faktische Unmöglichkeit / Schlechtleistung###ANT###false
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenken Sie die Rechtslage zu folgender Frage: Ein Hotel auf einer Insel an der Nordsee bestellt bei einer Firma (Hersteller) einen individuell angefertigten Heizkessel für die zentrale Heizung der Anlage im Kellergeschoss für 100.000,- EUR. Der Heizkessel wird angefertigt und geliefert. Die Fähre kollidiert jedoch mit einem treibenden Container und sinkt mit dem Heizkessel an Bord in tiefes Wasser. Eine Bergung des Schiffes und / oder des Heizkessels würde zwischen 2 und 3 Millionen EUR kosten. Welche Aussage/n zur Rechtslage ist/sind zutreffend?
+###FRG###5
+###FRG###5
+###FRG###false
+###FRG###false
+###FRG###Das Hotel hat nach wie vor Anspruch auf Lieferung dieses Heizkessels gegen den Hersteller.###ANT###false
+###FRG###Das Hotel hat Anspruch auf Lieferung eines neuen, baugleichen Heizkessels gegen den Hersteller.###ANT###false
+###FRG###Das Hotel hat nach eigener Wahl Anspruch auf Lieferung eines neuen, baugleichen Heizkessels oder auf Lieferung des versunkenen Heizkessels gegen den Hersteller.###ANT###false
+###FRG###Das Hotel hat Anspruch auf Ersatzlieferung eines neuen, baugleichen Heizkessels, den ggf. eine andere Firma produziert, dessen Kosten der ursprüngliche Vertragspartner tragen müsste.###ANT###false
+###FRG###Das Hotel hat keinen Anspruch mehr auf Lieferung eines Heizkessels gegen den Hersteller.###ANT###true
+
+###FRA###
+###FRG###Klick
+###FRG###Durchdenken Sie die Rechtslage zu folgender Frage: A vermietet ein optisch neutrales, ca. 1.000,- EUR teures Mountain-Bike an B. Es wird vereinbart, dass B das Bike nicht an Dritte weitergeben darf. Dennoch leiht er es dem C. C verkauft es einfach für 800,- EUR an den D, der nichts von der Vorgeschichte weiß. Welche Aussage/n zur Rechtslage ist/sind zutreffend?
+###FRG###3
+###FRG###3
+###FRG###false
+###FRG###false
+###FRG###A ist Eigentümer des Bikes und kann daher gem. § 985 BGB die Herausgabe verlangen.###ANT###false
+###FRG###C war nicht Eigentümer und hat strafbar gehandelt. Daher konnte D nicht Eigentümer werden.###ANT###false
+###FRG###D ist nicht zur Herausgabe verpflichtet, da er Eigentum an dem Bike erworben hat.###ANT###true
+###FRG###D hätte nur dann Eigentum an dem Bike erworben, wenn er umfänglich die Herkunft des Bikes erforscht hätte.###ANT###false
+
+###FRA###
+###FRG###Auswahl
+###FRG###Wie viele Rechtsgeschäfte umfassen Verkauf und Lieferung eines PC an einen Privatkunden?
+###FRG###3
+###FRG###3
+###FRG###false
+###FRG###false
+###FRG###3 Rechtsgeschäfte - Zwei Verpflichtungsgeschäfte und ein Verfügungsgeschäft###ANT###false
+###FRG###3 Rechtsgeschäfte - Ein Verpflichtungsgeschäft und zwei Verfügungsgeschäfte###ANT###true
+###FRG###4 Rechtsgeschäfte - Zwei Verpflichtungsgeschäfte und zwei Verfügungsgeschäfte###ANT###false
+###FRG###6 Rechtsgeschäfte - Drei Verpflichtungsgeschäfte und drei Verfügungsgeschäfte###ANT###false
+
+
