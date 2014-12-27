@@ -124,7 +124,7 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
 
     private void sucheTestDateien()
     {
-        TEST_DATEIEN_ORDNER = getApplicationContext().getExternalFilesDir(null);
+        TEST_DATEIEN_ORDNER = this.getExternalFilesDir(null);
 
         _dateienEinleser = new DateienEinleser(TEST_DATEIEN_ORDNER);
 

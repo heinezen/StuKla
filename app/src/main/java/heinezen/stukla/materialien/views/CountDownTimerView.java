@@ -25,6 +25,7 @@ public class CountDownTimerView extends View
 
     private Paint _countdownPaint;
 
+    private CountDownTimer _countdown;
     private long _maxZeit;
     private int _fortschritt;
 
@@ -100,7 +101,17 @@ public class CountDownTimerView extends View
     {
         _maxZeit = millisInFuture;
 
-        new CountDownTimer(_maxZeit, 1000)
+        resumeCountdown(_maxZeit);
+    }
+
+    /**
+     * Resumes the countdown at the given time.
+     *
+     * @param time Time left on countdown.
+     */
+    public void resumeCountdown(long time)
+    {
+        _countdown = new CountDownTimer(time, 1000)
         {
             @Override
             public void onTick(long millisUntilFinished)
@@ -129,5 +140,13 @@ public class CountDownTimerView extends View
 
             }
         }.start();
+    }
+
+    /**
+     * Stops the CountDownTimer of the View.
+     */
+    public void stopCountdown()
+    {
+        _countdown.cancel();
     }
 }

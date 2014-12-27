@@ -45,6 +45,11 @@ public class FragenWerkzeug extends ActionBarActivity
     private ViewPager _fragenPager;
 
     /**
+     *
+     */
+    private CountDownTimerView _countdownView;
+
+    /**
      * Der Timer des Werkzeugs;
      */
     private CountDownTimer _countdown;
@@ -69,6 +74,8 @@ public class FragenWerkzeug extends ActionBarActivity
         Frage[] fragen = new Frage[parc.length];
         System.arraycopy(parc, 0, fragen, 0, parc.length);
 
+        _countdownView = (CountDownTimerView) findViewById(R.id._countdown);
+
         erzeugeCountdown();
 
         _fragenService = new FragenServiceImpl(fragen, true);
@@ -85,27 +92,11 @@ public class FragenWerkzeug extends ActionBarActivity
         _testZeit = minuten * 60 * 1000;
         _vergangeneZeit = 0;
 
-        final CountDownTimerView countdownView = (CountDownTimerView) findViewById(R.id._countdown);
+        _countdownView = (CountDownTimerView) findViewById(R.id._countdown);
 
-        countdownView.setMaxZeit(_testZeit);
+        _countdownView.setMaxZeit(_testZeit);
 
-        _countdown = new CountDownTimer(_testZeit, 1000)
-        {
-            @Override
-            public void onTick(long millisUntilFinished)
-            {
-                _vergangeneZeit = _testZeit - millisUntilFinished;
-
-                countdownView.setFortschritt(millisUntilFinished);
-                countdownView.invalidate();
-            }
-
-            @Override
-            public void onFinish()
-            {
-                testAbgeben();
-            }
-        }.start();
+        setCountdown(_testZeit);
     }
 
     /**
@@ -123,6 +114,27 @@ public class FragenWerkzeug extends ActionBarActivity
         });
     }
 
+    private void setCountdown(long zeit)
+    {
+        _countdown = new CountDownTimer(zeit, 1000)
+        {
+            @Override
+            public void onTick(long millisUntilFinished)
+            {
+                _vergangeneZeit = _testZeit - millisUntilFinished;
+
+                _countdownView.setFortschritt(millisUntilFinished);
+                _countdownView.invalidate();
+            }
+
+            @Override
+            public void onFinish()
+            {
+                testAbgeben();
+            }
+        }.start();
+    }
+
     /**
      * Gibt den Test ab und nennt die Gesamtpunktzahl. Au�erdem werden alle AntwortElemente
      * gesperrt.
@@ -135,8 +147,11 @@ public class FragenWerkzeug extends ActionBarActivity
         _fragenPager.setCurrentItem(position);
 
         _countdown.cancel();
+        _countdownView.stopCountdown();
 
         erzeugeTestErgebnisWerkzeug();
+
+        _vergangeneZeit = _testZeit;
     }
 
     /**
@@ -166,7 +181,7 @@ public class FragenWerkzeug extends ActionBarActivity
         switch(item.getItemId())
         {
             case R.id.action_beenden:
-                item.setEnabled(false);
+                item.setTitle("Ergebnis anzeigen");
                 testAbgeben();
                 return true;
             case R.id.action_abbrechen:
@@ -210,6 +225,31 @@ public class FragenWerkzeug extends ActionBarActivity
     private void returnToStart()
     {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+
+        if(_vergangeneZeit != _testZeit)
+        {
+            _countdown.cancel();
+            _countdownView.stopCountdown();
+        }
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        if(_vergangeneZeit != _testZeit && _vergangeneZeit != 0)
+        {
+            long restzeit = _testZeit - _vergangeneZeit;
+            setCountdown(restzeit);
+            _countdownView.resumeCountdown(restzeit);
+        }
     }
 
     /**
