@@ -18,6 +18,25 @@ import heinezen.stukla.materialien.choice.ChoiceAntwort;
 public class KlickFrage extends AbstractChoiceFrage implements Frage
 {
     /**
+     * Implementation von Parcelable
+     */
+
+    public static final Parcelable.Creator<KlickFrage> CREATOR = new Creator<KlickFrage>()
+    {
+        @Override
+        public KlickFrage createFromParcel(Parcel in)
+        {
+            return new KlickFrage(in);
+        }
+
+        @Override
+        public KlickFrage[] newArray(int size)
+        {
+            return new KlickFrage[size];
+        }
+    };
+
+    /**
      * Erzeugt eine Frage mit Fragetext und mehreren Multiple-Choice-Antworten.
      *
      * @param fragetext Der Fragetext.
@@ -27,6 +46,13 @@ public class KlickFrage extends AbstractChoiceFrage implements Frage
     public KlickFrage(String fragetext, int fragepunkte, int abzugpunkte, ChoiceAntwort[] antworten)
     {
         super(fragetext, fragepunkte, abzugpunkte, antworten);
+    }
+
+    private KlickFrage(Parcel in)
+    {
+        super(in.readString(), in.readInt(), in.readInt(),
+                ChoiceAntwort.getAntwortenAusParcelable(in.readParcelableArray(ChoiceAntwort
+                        .class.getClassLoader())));
     }
 
     public int vergleicheAntworten()
@@ -43,7 +69,7 @@ public class KlickFrage extends AbstractChoiceFrage implements Frage
                 vergleich[i] = true;
             }
 
-            if(!vergleich[i])
+            if(!vergleich[i] && !antwort.istRichtig())
             {
                 wert -= getPunkteFuerAntwort();
             }
@@ -87,31 +113,5 @@ public class KlickFrage extends AbstractChoiceFrage implements Frage
     public Fragetyp getFragetyp()
     {
         return Fragetyp.KLICK;
-    }
-
-    /**
-     * Implementation von Parcelable
-     */
-
-    public static final Parcelable.Creator<KlickFrage> CREATOR = new Creator<KlickFrage>()
-    {
-        @Override
-        public KlickFrage createFromParcel(Parcel in)
-        {
-            return new KlickFrage(in);
-        }
-
-        @Override
-        public KlickFrage[] newArray(int size)
-        {
-            return new KlickFrage[size];
-        }
-    };
-
-    private KlickFrage(Parcel in)
-    {
-        super(in.readString(), in.readInt(), in.readInt(),
-                ChoiceAntwort.getAntwortenAusParcelable(in.readParcelableArray(ChoiceAntwort
-                        .class.getClassLoader())));
     }
 }
