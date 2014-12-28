@@ -15,39 +15,6 @@ import heinezen.stukla.materialien.Frage;
 public class TextFrage extends AbstractTextFrage implements Frage
 {
 
-    public TextFrage(String fragetext, int fragepunkte, int abzugpunkte, String[] antwortMoeglichkeiten)
-    {
-        super(fragetext, fragepunkte, abzugpunkte, antwortMoeglichkeiten);
-    }
-
-    @Override
-    public int vergleicheAntworten()
-    {
-        int wert = 0;
-
-        for(String moeglichkeit : _antwortMoeglichkeiten)
-        {
-            if(moeglichkeit.toLowerCase().equals(_spielerAntwort.toLowerCase()))
-            {
-                wert += getPunkteFuerAntwort();
-            }
-        }
-
-        return wert;
-    }
-
-    @Override
-    public void aktualisiereSpielerAntworten(Object neueAntwort)
-    {
-        _spielerAntwort = (String) neueAntwort;
-    }
-
-    @Override
-    public Fragetyp getFragetyp()
-    {
-        return Fragetyp.TEXT;
-    }
-
     /**
      * Implementation von Parcelable
      */
@@ -67,8 +34,41 @@ public class TextFrage extends AbstractTextFrage implements Frage
         }
     };
 
+    public TextFrage(String fragetext, int fragepunkte, int abzugpunkte, String[] antwortMoeglichkeiten)
+    {
+        super(fragetext, fragepunkte, abzugpunkte, antwortMoeglichkeiten);
+    }
+
     private TextFrage(Parcel in)
     {
         super(in.readString(), in.readInt(), in.readInt(), in.createStringArray());
+    }
+
+    @Override
+    public int vergleicheAntworten()
+    {
+        int wert = 0;
+
+        for(String moeglichkeit : _antwortMoeglichkeiten)
+        {
+            if(moeglichkeit.toLowerCase().equals(_spielerAntwort.toLowerCase()))
+            {
+                wert += getPunkteFuerAntwort();
+            }
+        }
+
+        return wert;
+    }
+
+    @Override
+    public void aktualisiereTesterAntworten(Object neueAntwort)
+    {
+        _spielerAntwort = (String) neueAntwort;
+    }
+
+    @Override
+    public Fragetyp getFragetyp()
+    {
+        return Fragetyp.TEXT;
     }
 }

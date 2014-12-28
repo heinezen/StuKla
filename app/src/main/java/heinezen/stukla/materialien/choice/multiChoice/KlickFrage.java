@@ -20,7 +20,6 @@ public class KlickFrage extends AbstractChoiceFrage implements Frage
     /**
      * Implementation von Parcelable
      */
-
     public static final Parcelable.Creator<KlickFrage> CREATOR = new Creator<KlickFrage>()
     {
         @Override
@@ -48,6 +47,11 @@ public class KlickFrage extends AbstractChoiceFrage implements Frage
         super(fragetext, fragepunkte, abzugpunkte, antworten);
     }
 
+    /**
+     * Erzeugt eine KlickFrage aus einem Parcel.
+     *
+     * @param in Das Parcel aus dem die KlickFrage erzeugt werden soll.
+     */
     private KlickFrage(Parcel in)
     {
         super(in.readString(), in.readInt(), in.readInt(),
@@ -64,7 +68,7 @@ public class KlickFrage extends AbstractChoiceFrage implements Frage
         for(int i = 0; i < _antwortArray.length; ++i)
         {
             ChoiceAntwort antwort = (ChoiceAntwort) _antwortArray[i];
-            if(antwort.istRichtig() == _spielerAntworten[i])
+            if(antwort.istRichtig() == _testerAntworten[i])
             {
                 vergleich[i] = true;
             }
@@ -104,9 +108,9 @@ public class KlickFrage extends AbstractChoiceFrage implements Frage
     }
 
     @Override
-    public void aktualisiereSpielerAntworten(Object antwortWerte)
+    public void aktualisiereTesterAntworten(Object antwortWerte)
     {
-        _spielerAntworten = (boolean[]) antwortWerte;
+        _testerAntworten = (boolean[]) antwortWerte;
     }
 
     @Override

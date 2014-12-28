@@ -9,18 +9,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO Kommentare
- *
- * @author Christophad
+ * Der DateienEinleser findet alle relevanten Dateien für das Testprogramm. Dabei durchsucht er
+ * Ordner nach Dateien und überprüft ob sie Testdateien sind.
  */
 public class DateienEinleser
 {
+    /**
+     * Der Ordner in dem gesucht wird.
+     */
     private final File ORDNER;
 
+    /**
+     * Kennzeichnung für Testdateien.
+     */
     private final String KENNZEICHNUNG = "###STUKLA###";
 
+    /**
+     * Liste mit den Pfaden zu den akzeptierten Dateien.
+     */
     private List<String> _testDateien;
 
+    /**
+     * Erzeugt einen DateienEinleser der in einem bestimmten Ordner einliest.
+     *
+     * @param ordner Der Ordner in dem gesucht werden soll.
+     */
     public DateienEinleser(File ordner)
     {
         ORDNER = ordner;
@@ -35,6 +48,11 @@ public class DateienEinleser
         }
     }
 
+    /**
+     * Sucht alle Dateien die keine Ordner sind im angegebenen Ordner.
+     *
+     * @param ordner Der Ordner in dem gesucht werden soll.
+     */
     private void getAlleDateienInOrdner(File ordner)
     {
         if(ordner.exists())
@@ -54,11 +72,11 @@ public class DateienEinleser
     }
 
     /**
-     * Pr�ft, ob die Datei mit dem angegebenen Namen zul�ssig ist.
+     * Prüft, ob die Datei mit dem angegebenen Namen zulässig ist.
      *
-     * @param name Dateiname
+     * @param name Dateiname der Datei die überprüft werden soll.
      *
-     * @return Gibt zur�ck, ob die Datei eine Testdatei ist.
+     * @return Gibt zurück, ob die Datei eine Testdatei ist.
      */
     private boolean testeObZulaessig(String name)
     {
@@ -78,6 +96,13 @@ public class DateienEinleser
         }
     }
 
+    /**
+     * Liest die erste Zeile der Datei aus und prüft ob diese eine Testdatei ist.
+     *
+     * @param name Name der zu überorüfenden Datei.
+     *
+     * @return Gibt zurück, ob die erste Zeile dem String einer Testdatei entspricht.
+     */
     private boolean ersteZeileZulaessig(String name)
     {
         try
@@ -107,6 +132,11 @@ public class DateienEinleser
 
     }
 
+    /**
+     * Gibt eine Liste mit den Pfaden der Fragedateien zurück.
+     *
+     * @return Pfade der zulässigen Testdateien.
+     */
     public List<String> getFrageDateien()
     {
         return _testDateien;

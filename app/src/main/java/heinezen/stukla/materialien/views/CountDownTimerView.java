@@ -12,23 +12,46 @@ import android.view.View;
 import heinezen.stukla.R;
 
 /**
- * Created by Christophad on 25.12.2014.
+ * Creates a simple View that can visually display a countdown as a deteriorating bar. CountDown has
+ * to be set manually because of the Timer included in the View.
  */
 public class CountDownTimerView extends View
 {
+    /**
+     * Colors of the components.
+     */
     private int _counterColor;
     private int _backgroundColor;
     private int _labelColor;
 
+    /**
+     * Text that is displayed before the countdown.
+     */
     private String _counterText;
+
+    /**
+     * The time left on the countdown.
+     */
     private String _time;
 
+    /**
+     * Painting tool of the view.
+     */
     private Paint _countdownPaint;
 
+    /**
+     * Timer of the countdown.
+     */
     private CountDownTimer _countdown;
     private long _maxZeit;
     private int _fortschritt;
 
+    /**
+     * Creates a CountDownTimerView with set context and attributes.
+     *
+     * @param context Context of the View.
+     * @param attrs Attributes of the countdowntimer, e.g. colors of the bars.
+     */
     public CountDownTimerView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
@@ -74,7 +97,13 @@ public class CountDownTimerView extends View
         canvas.drawText(_counterText + _time, (viewBreite / 2), viewHoehe - 7, _countdownPaint);
     }
 
-    public void setFortschritt(long millisUntilFinish)
+    /**
+     * Sets the progress of the countdown. Progress is seen on the timer bar and the displayed
+     * timer. This method should be called whenever the CountDownTimer is ticking.
+     *
+     * @param millisUntilFinish Milliseconds until the timer finishes.
+     */
+    public void setProgress(long millisUntilFinish)
     {
         int intervalle = this.getMeasuredWidth();
         if(intervalle == 0)
@@ -96,12 +125,22 @@ public class CountDownTimerView extends View
         }
     }
 
+    /**
+     * Sets the text that is displayed before the timer.
+     *
+     * @param text The text to be set.
+     */
     public void setText(String text)
     {
         _counterText = text;
     }
 
-    public void setMaxZeit(long millisInFuture)
+    /**
+     * Sets the starting time of the timer.
+     *
+     * @param millisInFuture Milliseconds until the timer finishes.
+     */
+    public void setStartTime(long millisInFuture)
     {
         _maxZeit = millisInFuture;
 

@@ -8,17 +8,26 @@ import android.widget.TextView;
 
 import java.io.File;
 
+/**
+ * UI für das Anzeigen einer Frage (ohne Antworten).
+ */
 class FragenFragmentUI
 {
+    /**
+     * Die Felder in den Informationen angezeigt werden.
+     */
     private TextView _fragetextLabel;
     private ImageView _bildLabel;
     private TextView _quelltextLabel;
 
+    /**
+     * Die Container der UI.
+     */
     private LinearLayout _anzeige;
     private LinearLayout _bildBereich;
 
     /**
-     * Erstellt eine neue GUI f�r ein FragenWerkzeug und f�gt dieses zu den Observern hinzu.
+     * Erstellt eine neue GUI für ein FragenWerkzeug und fügt dieses zu den Observern hinzu.
      *
      * @param anzeige Der Frame in dem das Fragment platziert wird.
      */
@@ -125,7 +134,7 @@ class FragenFragmentUI
     }
 
     /**
-     * Erzeugt eine Übersicht für die Frage, in der die erreichten Punkte angezeigt werden.
+     * Erzeugt eine Übersicht für die Frage und zeigt die erreichten Punkte an.
      *
      * @param endPunktzahl Erreichte Punktzahl.
      * @param maxPunktzahl Maximale Punktzahl.

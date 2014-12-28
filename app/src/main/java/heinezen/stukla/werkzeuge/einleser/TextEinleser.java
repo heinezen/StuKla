@@ -8,18 +8,23 @@ import java.io.InputStreamReader;
 
 
 /**
- * Liest Text aus einer Text-Datei in einen String ein. \n wird vernachl�ssigt, sodass eine
- * Formatierung in gew�nschter Form mit \n m�glich ist.
+ * Liest Text aus einer Textdatei in einen String ein. Line Seperators werden vernachlässigt.
  */
 public class TextEinleser
 {
+    /**
+     * Eingelesener Text.
+     */
     private String _text;
-    private String _titel;
 
+    /**
+     * Liest den Text einer Datei ein.
+     *
+     * @param datei Pfad der Datei die eingelesen werden soll.
+     */
     public TextEinleser(String datei)
     {
         _text = "";
-        _titel = "";
 
         try
         {
@@ -46,16 +51,13 @@ public class TextEinleser
         }
     }
 
-    public String getTitel()
-    {
-        return _titel;
-    }
-
-    public String toString()
-    {
-        return _text;
-    }
-
+    /**
+     * Liest den Text einer Datei ein.
+     *
+     * @param datei Datei die eingelesen werden soll.
+     *
+     * @return Der eingelesene Text.
+     */
     public static String getText(File datei)
     {
         String text = "";
@@ -66,9 +68,8 @@ public class TextEinleser
             InputStreamReader ipsr = new InputStreamReader(ips);
             BufferedReader br = new BufferedReader(ipsr);
 
-            // Erste Zeile �berspringen.
             br.readLine();
-            // Inhalt einlesen
+
             String line = br.readLine();
 
             while(line != null)
@@ -89,8 +90,13 @@ public class TextEinleser
         return text;
     }
 
-    public static String getTitel(File datei)
+    /**
+     * Gibt den eingelesenen Text aus.
+     *
+     * @return Der eingelesene Text.
+     */
+    public String toString()
     {
-        return datei.getName();
+        return _text;
     }
 }

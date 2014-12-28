@@ -16,8 +16,20 @@ import heinezen.stukla.materialien.choice.singleChoice.OptionalAuswahlFrage;
 import heinezen.stukla.materialien.lueckentext.OptionalTextFrage;
 import heinezen.stukla.materialien.lueckentext.TextFrage;
 
+/**
+ * Formattiert und parst Fragen des Programms. Fragen die mit dem Formattierer mit
+ * formattiereFrage() in Strings umgewandelt wurden, können von parseFrage() wieder eingelesen
+ * werden.
+ */
 public class FragenFormattierer
 {
+    /**
+     * Die Trenner welche die Teile der Fragen trennen.
+     */
+    public static final String FRAGEN_TRENNER = "###FRA###";
+    /**
+     * Indizes der Teile einer Frage im formattierten String.
+     */
     private static final int FRAGETYP_INDEX = 0;
     private static final int FRAGETEXT_INDEX = 1;
     private static final int FRAGEPUNKTE_INDEX = 2;
@@ -25,11 +37,11 @@ public class FragenFormattierer
     private static final int BILD_INDEX = 4;
     private static final int QUELLTEXT_INDEX = 5;
     private static final int ANTWORTEN_INDEX = 6;
-
+    /**
+     * Indizes der Teile einer Antwort im formattierten String.
+     */
     private static final int ANTWORTTEXT_INDEX = 0;
     private static final int ANTWORTWERT_INDEX = 1;
-
-    public static final String FRAGEN_TRENNER = "###FRA###";
     private static final String FRAGE_TRENNER = "###FRG###";
     private static final String ANTWORT_TRENNER = "###ANT###";
     private static final String BILD_TRENNER = "###BLD###";
@@ -90,7 +102,6 @@ public class FragenFormattierer
             }
         }
 
-        // TODO
         return erstelleFrage(fragetyp, fragetext, fragepunkte, abzugpunkte, bild, quelltext,
                 antworten);
     }
@@ -239,9 +250,6 @@ public class FragenFormattierer
             if(((OptionalFrage) frage).hatBild())
             {
                 File bild = ((OptionalFrage) frage).getBild();
-//				File bildKopiert = kopiereBild(bild, dir);
-//
-//				schreibFrage += BILD_TRENNER + bildKopiert.getName() + "\n";
             }
             else
             {
@@ -291,38 +299,4 @@ public class FragenFormattierer
 
         return schreibFrage;
     }
-
-    /**
-     * Kopiert ein Bild in ein Verzeichnis.
-     *
-     * @require bild != null
-     * @require dir != null
-     *
-     * @param bild
-     *            Das zu kopierende Bild.
-     * @param dir
-     *            Der Zielordner.
-     */
-//	private static File kopiereBild(File bild, File dir)
-//	{
-//		assert bild != null : "Vorbedingung verletzt : bild != null";
-//		assert dir != null : "Vorbedingung verletzt : dir != null";
-//
-//		Path originalPath = bild.toPath();
-//
-//		Path kopiertPath = dir.toPath();
-//
-//		String name = dir.getName() + "-" + originalPath.getFileName();
-//
-//		try
-//		{
-//			Files.copy(originalPath, kopiertPath.resolve(name), StandardCopyOption.COPY_ATTRIBUTES);
-//		}
-//		catch(IOException e)
-//		{
-//			e.printStackTrace();
-//		}
-//
-//		return kopiertPath.resolve(name).toFile();
-//	}
 }

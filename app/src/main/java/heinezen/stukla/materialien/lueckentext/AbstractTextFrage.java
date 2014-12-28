@@ -60,11 +60,11 @@ public abstract class AbstractTextFrage extends AbstractFrage
     }
 
     /**
-     * Gibt die Antworten des Spielers als Object zur�ck.
+     * Gibt die Antworten des Testers als Object zurück.
      *
-     * @return Die Antworten des Spielers
+     * @return Die Antworten des Testers
      */
-    public Object getSpielerAntworten()
+    public Object getTesterAntworten()
     {
         return _spielerAntwort;
     }
@@ -88,11 +88,11 @@ public abstract class AbstractTextFrage extends AbstractFrage
     public abstract int vergleicheAntworten();
 
     /**
-     * Aktualisiert die Antworten des Spielers.
+     * Aktualisiert die Antworten des Testers.
      *
-     * @param neueAntwort Die neue(n) Antwort(en) des Spielers.
+     * @param neueAntwort Die neue(n) Antwort(en) des Testers.
      */
-    public abstract void aktualisiereSpielerAntworten(Object neueAntwort);
+    public abstract void aktualisiereTesterAntworten(Object neueAntwort);
 
     /**
      * Implementation von Parcelable

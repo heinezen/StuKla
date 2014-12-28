@@ -8,14 +8,31 @@ import android.widget.TextView;
 
 import heinezen.stukla.R;
 
+/**
+ * werkzeug zum Anzeigen des Ergenisses eines Tests.
+ */
 public class TestErgebnisWerkzeug extends ActionBarActivity
 {
+    /**
+     * Erkennungsstrings für das Weitergeben von Informationen an andere Prozesse
+     */
     private static final String ARG_ENDERGEBNIS = "Endergebnis";
     private static final String ARG_MAXERGEBNIS = "MaxErgebnis";
     private static final String ARG_VERGANGENE_ZEIT = "Vergangene Zeit";
 
+    /**
+     * Ergebnis des Testers
+     */
     private int _ergebnis;
+
+    /**
+     * Maximal erreichbare Punktzahl.
+     */
     private int _maxErgebnis;
+
+    /**
+     * Für den Test benötigte Zeit.
+     */
     private String _vergangeneZeit;
 
     @Override
@@ -50,9 +67,9 @@ public class TestErgebnisWerkzeug extends ActionBarActivity
     }
 
     /**
-     * Verarbeitet eine Zeitangabe in einen formattierten String der Form HH:MM
+     * Verarbeitet eine Zeitangabe in einen formattierten String der Form HH:MM.
      *
-     * @param zeitInMillisekunden Die Zeit in Millisekunden
+     * @param zeitInMillisekunden Die Zeit in Millisekunden.
      *
      * @return Zeitangabe in HH:MM
      */

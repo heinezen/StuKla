@@ -11,21 +11,51 @@ import heinezen.stukla.R;
 import heinezen.stukla.materialien.Frage;
 import heinezen.stukla.materialien.OptionalFrage;
 
+/**
+ * Für eine Frage kann ein solches FragenFragment erstellt werden, bei dem eine Frage verwaltet und
+ * angezeigt wird.
+ */
 public class FragenFragment extends Fragment
 {
+    /**
+     * Erkennungsstrings für das Weitergeben von Informationen an andere Prozesse
+     */
     private static final String ARG_FRAGE = "Frage";
     private static final String ARG_BEENDET = "Beendet";
 
+    /**
+     * Die Frage des Fragments.
+     */
     private Frage _frage;
+
+    /**
+     * Der Status des Fragments.
+     */
     private boolean _istBeendet;
 
+    /**
+     * Das AntwortenWerkzeug zum Anzeigen der Antworten
+     */
     private AntwortenWerkzeug _antwortenWerkzeug;
+
+    /**
+     * Das UI des Fragments.
+     */
     private FragenFragmentUI _uiFragenFragment;
+
+    /**
+     * Leerer Konstruktor des FragenFragments.
+     */
+    public FragenFragment()
+    {
+    }
 
     /**
      * Erzeugt eine neue Instanz des FragenFragments.
      *
      * @param frage Die Frage des Fragments.
+     * @param beendet Der Status des Fragments. Ist beendet auf true gesetzt, können keine Antworten
+     * mehr gegeben werden.
      *
      * @return Ein FragenFragment.
      */
@@ -37,10 +67,6 @@ public class FragenFragment extends Fragment
         args.putBoolean(ARG_BEENDET, beendet);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public FragenFragment()
-    {
     }
 
     @Override
@@ -76,23 +102,50 @@ public class FragenFragment extends Fragment
             _uiFragenFragment.setzeBeendet(_frage.vergleicheAntworten(), _frage.getMaxPunktzahl());
         }
 
-        aendereElemente();
+        erzeugeElemente();
 
         return rootView;
     }
 
     /**
-     * Ändert die GUI-Elemente und passt sie an die Frage an.
+     * Erzeugt die GUI-Elemente und passt sie an die Frage an.
      */
-    private void aendereElemente()
+    private void erzeugeElemente()
     {
-        aendereFrage();
-        aendereQuelltext();
-        aendereBild();
-        aendereAntworten();
+        erzeugeFrage();
+        erzeugeQuelltext();
+        erzeugeBild();
+        erzeugeAntworten();
     }
 
-    private void aendereBild()
+    /**
+     * Erzeugt den angezeigten Fragebereich.
+     */
+    private void erzeugeFrage()
+    {
+        _uiFragenFragment.aktualisiereFrage(_frage.getFragetext());
+    }
+
+    /**
+     * Erzeugt den angezeigten Quelltext.
+     */
+    private void erzeugeQuelltext()
+    {
+        if(_frage instanceof OptionalFrage)
+        {
+            _uiFragenFragment.aktualisiereQuelltext(
+                    ((OptionalFrage) _frage).getQuelltext());
+        }
+        else
+        {
+            _uiFragenFragment.aktualisiereQuelltext("");
+        }
+    }
+
+    /**
+     * Erzeugt das Bild der Frage.
+     */
+    private void erzeugeBild()
     {
         if(_frage instanceof OptionalFrage)
         {
@@ -112,43 +165,19 @@ public class FragenFragment extends Fragment
     }
 
     /**
-     * Ändert den angezeigten Fragebereich.
+     * Erzeugt den angezeigten Antwortenbereich.
      */
-    private void aendereFrage()
-    {
-        _uiFragenFragment.aktualisiereFrage(_frage.getFragetext());
-    }
-
-    /**
-     * Ändert den angezeigten Quelltext
-     */
-    private void aendereQuelltext()
-    {
-        if(_frage instanceof OptionalFrage)
-        {
-            _uiFragenFragment.aktualisiereQuelltext(
-                    ((OptionalFrage) _frage).getQuelltext());
-        }
-        else
-        {
-            _uiFragenFragment.aktualisiereQuelltext("");
-        }
-    }
-
-    /**
-     * Ändert den angezeigten Antwortenbereich.
-     */
-    private void aendereAntworten()
+    private void erzeugeAntworten()
     {
         _antwortenWerkzeug
                 .aktualisiereAntworten(_frage.getAntworttexte(), _frage.getAntwortenWerte(),
-                        _frage.getSpielerAntworten());
+                        _frage.getTesterAntworten());
     }
 
     @Override
     public void onPause()
     {
-        _frage.aktualisiereSpielerAntworten(_antwortenWerkzeug.getEingaben());
+        _frage.aktualisiereTesterAntworten(_antwortenWerkzeug.getEingaben());
         super.onDestroy();
     }
 }

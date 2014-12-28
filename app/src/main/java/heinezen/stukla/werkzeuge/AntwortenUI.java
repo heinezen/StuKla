@@ -12,6 +12,10 @@ import android.widget.TextView;
 
 import heinezen.stukla.fachwerte.enums.Fragetyp;
 
+/**
+ * UI zum Anzeigen und Beantworten mehrerer Antworttypen. Besitzt einen 'Beendet'-Modus, in dem alle
+ * Antworten für Beantwortung gesperrt sind und farbig nach Lösung des Testers markiert sind.
+ */
 class AntwortenUI
 {
     /**
@@ -39,7 +43,9 @@ class AntwortenUI
     }
 
     /**
-     * Aktualisiert den Antwortenbereich. Bedienelemente passen sich dem jeweiligen Fragetyp an.
+     * Aktualisiert den Antwortenbereich. Bedienelemente passen sich dem jeweiligen Fragetyp an. Bei
+     * Beendigung des Tests werden alle Antworten für Interaktion deaktiviert und farbig nach ihrer
+     * Richtigkeit markiert.
      *
      * @param antwortTexte Die Texte der Antworten.
      * @param antwortenWerte Die tatsächlichen Werte der Antworten.
@@ -175,8 +181,8 @@ class AntwortenUI
     }
 
     /**
-     * Gibt die Eingaben des Spielers zur derzeitigen Antwort zur�ck. dabei wird je nach Fragetyp
-     * ein unterschiedlicher R�ckgabetyp verwendet. Beim casten ist auf den Fragetyp zu achten.
+     * Gibt die Eingaben des Spielers zur derzeitigen Antwort zurück. dabei wird je nach Fragetyp
+     * ein unterschiedlicher Rückgabetyp verwendet. Bei Umwandlung ist auf den Fragetyp zu achten.
      *
      * @param fragetyp Der Fragetyp der Frage.
      *
@@ -233,7 +239,7 @@ class AntwortenUI
     }
 
     /**
-     * Beendet den Test, sodass keine Antworten mehr gegeben werden k�nnen.
+     * Beendet den Test, sodass keine Antworten mehr gegeben werden können.
      */
     public void setzeBeendet()
     {

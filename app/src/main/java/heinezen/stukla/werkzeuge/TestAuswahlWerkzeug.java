@@ -25,21 +25,42 @@ import heinezen.stukla.exceptions.NoQuestionsInFileException;
 import heinezen.stukla.werkzeuge.einleser.DateienEinleser;
 import heinezen.stukla.werkzeuge.einleser.FragenEinleser;
 
+/**
+ * Werkzeug zur Auswahl eines Tests aus dem Applikationsordner.
+ */
 public class TestAuswahlWerkzeug extends ActionBarActivity
 {
+    /**
+     * Erkennungsstrings für das Weitergeben von Informationen an andere Prozesse
+     */
     private static final String ARG_ZEIT = "Zeit";
     private static final String ARG_FRAGEN = "Fragen";
     private static final String ERSTER_START = "ERSTER_START";
 
+    /**
+     * Ordner in dem die Testdateien liegen.
+     */
     private File TEST_DATEIEN_ORDNER;
 
+    /**
+     * Der Spinner zur Auswahl von Fragensätzen.
+     */
     private Spinner _testAuswahl;
+
+    /**
+     * Button zum Starten des ausgewählten Tests.
+     */
     private Button _testStartenButton;
 
+    /**
+     * Array der Testdateien.
+     */
     private String[] _testDateien;
-    private int _aktuellePosition;
 
-    private DateienEinleser _dateienEinleser;
+    /**
+     * Index des aktuell ausgewählten Tests.
+     */
+    private int _aktuellePosition;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -60,6 +81,9 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         registriereKomponenten();
     }
 
+    /**
+     * Kopiert die in den Assets enthaltenen Tests in das Verzeichnis der Apllikation.
+     */
     private void kopiereTestsAusAssets()
     {
         AssetManager manager = getResources().getAssets();
@@ -117,11 +141,14 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         }
     }
 
+    /**
+     * Sucht Testdateien in dem Tesdateienordner.
+     */
     private void sucheTestDateien()
     {
         TEST_DATEIEN_ORDNER = this.getExternalFilesDir(null);
 
-        _dateienEinleser = new DateienEinleser(TEST_DATEIEN_ORDNER);
+        DateienEinleser _dateienEinleser = new DateienEinleser(TEST_DATEIEN_ORDNER);
 
         _testAuswahl = (Spinner) findViewById(R.id.spinner);
         _testStartenButton = (Button) findViewById(R.id._testStartenButton);
@@ -141,6 +168,9 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         erzeugeAuswahlBereich();
     }
 
+    /**
+     * Registriert die Listener der Komponenten.
+     */
     private void registriereKomponenten()
     {
         _testAuswahl.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
@@ -169,6 +199,9 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         });
     }
 
+    /**
+     * Erzeugt den Bereich in dem die Tests ausgewählt werden können.
+     */
     private void erzeugeAuswahlBereich()
     {
         List<String> testDateienNamen = new ArrayList<>();
@@ -186,6 +219,11 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         _testAuswahl.setAdapter(adapter);
     }
 
+    /**
+     * Aktualisiert die Übersicht für den ausgewählten Test.
+     *
+     * @param dateiIndex Index des Tests in der Testliste.
+     */
     private void aktualisiereUebersicht(int dateiIndex)
     {
         String datei = _testDateien[dateiIndex];
@@ -194,7 +232,7 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
 
         try
         {
-            String[] uebersicht = leser.gibUeberblickAus();
+            String[] uebersicht = leser.gibUebersichtAus();
 
             TextView v = (TextView) findViewById(R.id._modulAngabeLabel);
             v.setText(uebersicht[1]);
@@ -211,6 +249,11 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         }
     }
 
+    /**
+     * Erzeugt ein FragenWerkzeug mit dem ein Test bearbeitet werden kann.
+     *
+     * @param testFragen Index des Tests in der Testliste.
+     */
     private void erzeugeFragenWerkzeug(int testFragen)
     {
         FragenEinleser fragenEinleser = new FragenEinleser(_testDateien[testFragen]);
@@ -221,7 +264,7 @@ public class TestAuswahlWerkzeug extends ActionBarActivity
         {
             intent.putExtra(ARG_FRAGEN, fragenEinleser.gibFragenAus());
 
-            String[] uebersicht = fragenEinleser.gibUeberblickAus();
+            String[] uebersicht = fragenEinleser.gibUebersichtAus();
             intent.putExtra(ARG_ZEIT, Integer.parseInt(uebersicht[3]));
 
             startActivity(intent);

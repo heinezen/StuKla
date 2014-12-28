@@ -21,13 +21,14 @@ import heinezen.stukla.services.FragenService;
 import heinezen.stukla.services.FragenServiceImpl;
 
 /**
- * Das FragenWerkzeug benutzt die GUI, um Fragen anzuzeigen und den Test abzugeben. Es ist
- * zus�tzlich ein Observer der GUI.
- *
- * @author Christophad
+ * Das FragenWerkzeug benutzt FragenFragments, um Fragen anzuzeigen. Um den Test abzugeben,
+ * ist im Menü ein Feld vorhanden.
  */
 public class FragenWerkzeug extends ActionBarActivity
 {
+    /**
+     * Erkennungsstrings für das Weitergeben von Informationen an andere Prozesse
+     */
     private static final String ARG_ENDERGEBNIS = "Endergebnis";
     private static final String ARG_MAXERGEBNIS = "MaxErgebnis";
     private static final String ARG_FRAGEN = "Fragen";
@@ -91,6 +92,9 @@ public class FragenWerkzeug extends ActionBarActivity
         registrierePager();
     }
 
+    /**
+     * Erzeugt den Countdown aus den in der Übersicht angegebenen Informationen.
+     */
     private void erzeugeCountdown()
     {
         int minuten = getIntent().getIntExtra(ARG_ZEIT, 60);
@@ -99,7 +103,7 @@ public class FragenWerkzeug extends ActionBarActivity
 
         _countdownView = (CountDownTimerView) findViewById(R.id._countdown);
 
-        _countdownView.setMaxZeit(_testZeit);
+        _countdownView.setStartTime(_testZeit);
 
         setCountdown(_testZeit);
     }
@@ -119,6 +123,11 @@ public class FragenWerkzeug extends ActionBarActivity
         });
     }
 
+    /**
+     * Setzt den Countdown neu.
+     *
+     * @param zeit Neue Zeit des Countdowns in Millisekunden.
+     */
     private void setCountdown(long zeit)
     {
         _countdown = new CountDownTimer(zeit, 1000)
@@ -128,7 +137,7 @@ public class FragenWerkzeug extends ActionBarActivity
             {
                 _vergangeneZeit = _testZeit - millisUntilFinished;
 
-                _countdownView.setFortschritt(millisUntilFinished);
+                _countdownView.setProgress(millisUntilFinished);
                 _countdownView.invalidate();
             }
 
@@ -141,8 +150,8 @@ public class FragenWerkzeug extends ActionBarActivity
     }
 
     /**
-     * Gibt den Test ab und nennt die Gesamtpunktzahl. Au�erdem werden alle AntwortElemente
-     * gesperrt.
+     * Gibt den Test ab und nennt die Gesamtpunktzahl. Außerdem werden alle Antworten für
+     * Bearbeitung gesperrt.
      */
     private void testAbgeben()
     {

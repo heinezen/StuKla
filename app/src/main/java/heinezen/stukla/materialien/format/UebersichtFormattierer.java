@@ -1,9 +1,18 @@
 package heinezen.stukla.materialien.format;
 
+/**
+ * Formattiert und parst die Übersicht eines Fragensatzes des Programms.
+ */
 public class UebersichtFormattierer
 {
+    /**
+     * Erste Zeile in der Fragendatei.
+     */
     private static final String TITEL = "###STUKLA###";
 
+    /**
+     * Die Trenner welche die Teile der Übersicht trennen.
+     */
     private static final String UEBERBLICK_TRENNER = "###UEB###";
 
     /**

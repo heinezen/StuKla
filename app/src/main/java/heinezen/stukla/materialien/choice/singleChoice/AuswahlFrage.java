@@ -18,53 +18,6 @@ import heinezen.stukla.materialien.choice.ChoiceAntwort;
 public class AuswahlFrage extends AbstractChoiceFrage implements Frage
 {
     /**
-     * Erzeugt eine Frage mit Fragetext und mehreren Single-Choice-Antworten.
-     *
-     * @param fragetext Der Fragetext.
-     * @param fragepunkte Die Punkte f�r eine richtige Antwort.
-     * @param antworten Die m�glichen Antworten der Frage.
-     */
-    public AuswahlFrage(String fragetext, int fragepunkte, int abzugpunkte,
-                        ChoiceAntwort[] antworten)
-    {
-        super(fragetext, fragepunkte, abzugpunkte, antworten);
-    }
-
-    @Override
-    public int vergleicheAntworten()
-    {
-        int wert = 0;
-
-        for(int i = 0; i < _antwortArray.length; ++i)
-        {
-            ChoiceAntwort antwort = (ChoiceAntwort) _antwortArray[i];
-            if(antwort.istRichtig() && _spielerAntworten[i])
-            {
-                wert += getPunkteFuerAntwort();
-            }
-        }
-
-        return wert;
-    }
-
-    public int getMaxPunktzahl()
-    {
-        return _antwortPunkte;
-    }
-
-    @Override
-    public void aktualisiereSpielerAntworten(Object neueAntworten)
-    {
-        _spielerAntworten = (boolean[]) neueAntworten;
-    }
-
-    @Override
-    public Fragetyp getFragetyp()
-    {
-        return Fragetyp.AUSWAHL;
-    }
-
-    /**
      * Implementation von Parcelable
      */
 
@@ -83,10 +36,57 @@ public class AuswahlFrage extends AbstractChoiceFrage implements Frage
         }
     };
 
+    /**
+     * Erzeugt eine Frage mit Fragetext und mehreren Single-Choice-Antworten.
+     *
+     * @param fragetext Der Fragetext.
+     * @param fragepunkte Die Punkte f�r eine richtige Antwort.
+     * @param antworten Die m�glichen Antworten der Frage.
+     */
+    public AuswahlFrage(String fragetext, int fragepunkte, int abzugpunkte,
+                        ChoiceAntwort[] antworten)
+    {
+        super(fragetext, fragepunkte, abzugpunkte, antworten);
+    }
+
     private AuswahlFrage(Parcel in)
     {
         super(in.readString(), in.readInt(), in.readInt(),
                 ChoiceAntwort.getAntwortenAusParcelable(in.readParcelableArray(ChoiceAntwort
                         .class.getClassLoader())));
+    }
+
+    @Override
+    public int vergleicheAntworten()
+    {
+        int wert = 0;
+
+        for(int i = 0; i < _antwortArray.length; ++i)
+        {
+            ChoiceAntwort antwort = (ChoiceAntwort) _antwortArray[i];
+            if(antwort.istRichtig() && _testerAntworten[i])
+            {
+                wert += getPunkteFuerAntwort();
+            }
+        }
+
+        return wert;
+    }
+
+    public int getMaxPunktzahl()
+    {
+        return _antwortPunkte;
+    }
+
+    @Override
+    public void aktualisiereTesterAntworten(Object neueAntworten)
+    {
+        _testerAntworten = (boolean[]) neueAntworten;
+    }
+
+    @Override
+    public Fragetyp getFragetyp()
+    {
+        return Fragetyp.AUSWAHL;
     }
 }

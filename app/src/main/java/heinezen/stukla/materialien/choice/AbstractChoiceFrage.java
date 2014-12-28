@@ -22,9 +22,9 @@ public abstract class AbstractChoiceFrage extends AbstractFrage
     protected final Antwort[] _antwortArray;
 
     /**
-     * Antworten des Spielers.
+     * Antworten des Testers.
      */
-    protected boolean[] _spielerAntworten;
+    protected boolean[] _testerAntworten;
 
     /**
      * Erzeugt eine Frage mit Fragetext und mehreren Multiple-Choice-Antworten.
@@ -32,7 +32,7 @@ public abstract class AbstractChoiceFrage extends AbstractFrage
      * @param fragetext Der Fragetext.
      * @param fragepunkte Die Punkte für eine richtige Antwort.
      * @param abzugpunkte Die Punkte, die für eine falsche Antwort abgezogen werden.
-     * @param antworten Die m�glichen Antworten der Frage.
+     * @param antworten Die möglichen Antworten der Frage.
      */
     public AbstractChoiceFrage(String fragetext, int fragepunkte, int abzugpunkte, Antwort[] antworten)
     {
@@ -40,7 +40,7 @@ public abstract class AbstractChoiceFrage extends AbstractFrage
 
         _antwortArray = mischeAntworten(antworten);
 
-        _spielerAntworten = new boolean[_antwortArray.length];
+        _testerAntworten = new boolean[_antwortArray.length];
     }
 
     /**
@@ -84,17 +84,17 @@ public abstract class AbstractChoiceFrage extends AbstractFrage
     }
 
     /**
-     * Gibt die Antworten des Spielers als Object zur�ck.
+     * Gibt die Antworten des Testers als Object zurück.
      *
-     * @return Die Antworten des Spielers
+     * @return Die Antworten des Testers
      */
-    public Object getSpielerAntworten()
+    public Object getTesterAntworten()
     {
-        return _spielerAntworten;
+        return _testerAntworten;
     }
 
     /**
-     * Gibt die richtigen Antworten der Frage zur�ck.
+     * Gibt die richtigen Antworten der Frage zurück.
      *
      * @return Die richtigen Antworten.
      */
@@ -112,31 +112,30 @@ public abstract class AbstractChoiceFrage extends AbstractFrage
     }
 
     /**
-     * Gibt die maximal zu erreichende Punktzahl der Frage zur�ck.
+     * Gibt die maximal zu erreichende Punktzahl der Frage zurück.
      *
      * @return Die maximal erreichbare Punktzahl.
      */
     public abstract int getMaxPunktzahl();
 
     /**
-     * Vergleicht die Antworten des Spielers mit den tats�chlichen Antworten. Zur�ckgegeben wird
-     * eine Punktzahl, die die erreichten Punkte f�r die Frage darstellt.
+     * Vergleicht die Antworten des Testers mit den tatsächlichen Antworten. Zurückgegeben wird eine
+     * Punktzahl, die die erreichten Punkte für die Frage darstellt.
      *
      * @return Das Punktzahl f�r alle Antworten.
      */
     public abstract int vergleicheAntworten();
 
     /**
-     * Aktualisiert die Antworten des Spielers.
+     * Aktualisiert die Antworten des Testers.
      *
-     * @param neueAntworten Die neue(n) Antwort(en) des Spielers.
+     * @param neueAntworten Die neue(n) Antwort(en) des Testers.
      */
-    public abstract void aktualisiereSpielerAntworten(Object neueAntworten);
+    public abstract void aktualisiereTesterAntworten(Object neueAntworten);
 
     /**
      * Implementation von Parcelable
      */
-
     @Override
     public void writeToParcel(Parcel dest, int flags)
     {

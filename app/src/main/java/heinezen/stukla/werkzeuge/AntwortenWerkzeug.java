@@ -4,6 +4,9 @@ import android.widget.LinearLayout;
 
 import heinezen.stukla.fachwerte.enums.Fragetyp;
 
+/**
+ *
+ */
 public class AntwortenWerkzeug
 {
     /**
@@ -16,6 +19,11 @@ public class AntwortenWerkzeug
      */
     private Fragetyp _aktuellerFragetyp;
 
+    /**
+     * Erzeugt ein Antwortenwerkzeug für den gegebenen Antwortenbereich.
+     *
+     * @param antwortenBereich Der Antwortenbereich der genutzt werden soll.
+     */
     public AntwortenWerkzeug(LinearLayout antwortenBereich)
     {
         _uiAntworten = new AntwortenUI(antwortenBereich);
@@ -23,6 +31,8 @@ public class AntwortenWerkzeug
 
     /**
      * Aktualisiert den Antwortenbereich. Bedienelemente passen sich dem jeweiligen Fragetyp an.
+     * Bei Beendigung des Tests werden alle Antworten für Interaktion deaktiviert und farbig nach
+     * ihrer Richtigkeit markiert.
      *
      * @param antwortTexte Die Texte der Antworten.
      * @param antwortenWerte Die tatsächlichen Werte der Antworten.
@@ -35,8 +45,8 @@ public class AntwortenWerkzeug
     }
 
     /**
-     * Gibt die Eingaben des Spielers zur derzeitigen Antwort zur�ck. dabei wird je nach Fragetyp
-     * ein unterschiedlicher R�ckgabetyp verwendet. Beim casten ist auf den Fragetyp zu achten.
+     * Gibt die Eingaben des Spielers zur derzeitigen Antwort zurück. dabei wird je nach Fragetyp
+     * ein unterschiedlicher Rückgabetyp verwendet. Bei Umwandlung ist auf den Fragetyp zu achten.
      *
      * @return Ein Object mit den derzeitigen Antwortwerten.
      */
